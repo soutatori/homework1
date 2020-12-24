@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <title>アカウント更新完了画面</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style3.css">
   </head>
     
 <body>
@@ -20,7 +20,7 @@
       </ul>
   </header>    
     
-    
+  <main>
   <form>
       <br><h3>アカウント更新完了画面</h3><br>
       <div class="kannryou">
@@ -28,13 +28,13 @@
       </div>
       
       <div class="back">
-      <form action="XXXXXXXXXXX">
-      <p><input type="submit" class="button1" value="TOPページへ戻る">
+      <form action="delete.php">
+      <p><input type="submit" value="TOPページへ戻る">
       </form>
       </div>
       
   </form>
-    
+  </main>   
 <footer>copyright D.I.Works|D.I.blog is the one which provides A to Z about programming  
 </footer>
 

@@ -127,6 +127,7 @@
           <li>
             </select>
       </ul>
+      
       <br>
             <p><input type="submit" class="submit" value="確認する"></p>     
   </form>

@@ -1,3 +1,36 @@
+<?php
+
+mb_internal_encoding("utf-8");
+
+        try { 
+            $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
+            $pdo ->exec("insert into test1(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority)
+
+            values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_name_kana']."','".$_POST['last_name_kana']."','".$_POST['mail']."','".$_POST['password']."','".$_POST['gender']."','".$_POST['postal_code']."','".$_POST['prefecture']."','".$_POST['address_1']."','".$_POST['address_2']."','".$_POST['authority']."');");   
+            
+             //values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_name_kana']."','".$_POST['last_name_kana']."','".$_POST['mail']."','".$_POST['password']."','".$_POST['gender']."','".$_POST['postal_code']."','".$_POST['prefecture']."','".$_POST['address_1']."','".$_POST['address_2']."','".$_POST['authority']."');");  
+            
+             } catch (PDOException $e) { 
+            print "DBに接続できませんでした。" . $e->getMessage(); 
+            exit(); 
+            } 
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -28,8 +61,8 @@
       </div>
       
       <div class="back">
-      <form action="XXXXXXXXXXX">
-      <p><input type="submit" class="button1" value="TOPページへ戻る">
+      <form action="index.html">
+          <p><input type="submit" value="TOPページへ戻る"></p>
       </form>
       </div>
       
