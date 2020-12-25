@@ -86,8 +86,7 @@
           <li>
             <label>住所(都道府県)</label>
             <?php 
-              if ( $_POST['prefecture'] === "1" ){ echo '北海道'; }
-		      elseif ( $_POST['prefecture'] === "2" ){ echo '青森'; } 
+              echo $_POST['prefecture'];
             ?>
           </li>
               
