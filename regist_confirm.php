@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -61,9 +64,7 @@
           
           <li>
             <label>パスワード</label>
-            <?php 
-              echo $_POST['password'];
-            ?>
+            <input type="hidden" name="password" value="<?= $password ?>">●●●●●●●●●●
           </li>
           
           <li>

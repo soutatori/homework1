@@ -1,3 +1,21 @@
+    <?php
+
+    mb_internal_encoding("utf-8");
+    $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
+    $stmt = $pdo->query("select * from test1");
+    
+    
+
+
+
+while ($row = $stmt->fetch()) { echo $row['id']; echo $row['last_name'];
+
+}
+
+
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -18,9 +36,12 @@
           <li>問い合わせ</li>
           <li>その他</li>
       </ul>
-  </header>   
+  </header> 
+    
+  
     
 <div class="confirm">
+    
     <br><h3>アカウント削除画面</h3><br>
     <form method="post" action="delete_confirm.php">
 

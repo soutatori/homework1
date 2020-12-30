@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -28,9 +30,7 @@
       </div>
        
       <div class="back">
-      <form action="index.html">
-      <p><input type="submit" value="TOPページへ戻る">
-      </form>
+        <p><input type="button" onclick="location.href='./index.html'" value="TOPページへ戻る"></p>
       </div>
       
   </form>

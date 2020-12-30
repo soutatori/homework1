@@ -1,3 +1,19 @@
+ <?php
+    mb_internal_encoding("utf-8");
+    $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
+    $stmt = $pdo->query("select * from test1_id");
+    
+  
+    
+    
+
+  ?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 

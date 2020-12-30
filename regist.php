@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -27,13 +31,12 @@
       <ul>
           <li>
             <label>名前(姓)</label>
-            <input type="text" required="required"　class="text" size="35" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*" 
-             value="<?php if (!empty($_POST['family_name'])){echo $_POST['family_name']; } ?>">
+            <input type="text" required="required"　class="text" size="35" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*">
           </li>     
           <li>
             <label>名前(名)</label>
-            <input type="text" required="required" class="text" size="35" name="last_name" maxlength="10"　pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
-             value="<?php if (!empty($_POST[''])){echo $_POST['']; } ?>">
+            <input type="text" required="required" class="text" size="35" name="last_name" maxlength="10"　pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*">
+             
           </li>
           <li>
             <label>カナ(姓)</label>

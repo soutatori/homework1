@@ -61,9 +61,7 @@ mb_internal_encoding("utf-8");
       </div>
       
       <div class="back">
-      <form action="index.html">
-          <p><input type="submit" value="TOPページへ戻る"></p>
-      </form>
+        <p><input type="button" onclick="location.href='./index.html'" value="TOPページへ戻る"></p>
       </div>
       
   </form>

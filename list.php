@@ -1,22 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -28,11 +10,9 @@
     
 <body>
   <?php
-    mb_internal_encoding("utf-8");
+       mb_internal_encoding("utf-8");
     $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
     $stmt = $pdo->query("select * from test1");
-    
-  
     
     
 
@@ -77,10 +57,10 @@
                 </tr>    
               </thead>    
               <tbody>
-                <?php $count =1 ?> 
+                
                 <?php foreach ($stmt as $i => $row) : ?>
                   <tr>
-                    <td><?= $count ?></td>
+                    <td><?= $row['id'] ?></td>
                     <td><?= $row['family_name'] ?></td>
                     <td><?= $row['last_name'] ?></td>
                     <td><?= $row['family_name_kana'] ?></td>
@@ -89,16 +69,13 @@
                     <td><?= $row['gender'] ?></td>
                     <td><?= $row['authority'] ?></td>  
                     <td><?= $row['delete_flag'] ?></td>
-                    <td><?= $row['registered_time'] ?></td>
+                    <td><?= $row['registered_time']?></td>
                     <td><?= $row['update_time'] ?></td>
-                    <td><a href="update.php ?family_name=<?= $row['']?>&last_name=<?= $row['last_name']?>"
-                           class="btn btn-warning">更新</a></td>
-                    <td><a href="delete.php ?family_name=<?= $row['']?>&last_name=<?= $row['last_name']?>"
-                           class="btn btn-warning">削除</a></td> 
+                    <td><a href="http://localhost/workspace1/homework1/update.php?id=>?php echo $column['id'] ?>">更新</a></td> 
+                    <td><a href="http://localhost/workspace1/homework1/delete.php?id=>?php echo $column['id'] ?>">削除</a></td> 
                         
                   </tr>
-                <?php $count++;
-                     endforeach; ?>
+                <?php endforeach; ?>
               </tbody>  
             </table>   
           </div>
