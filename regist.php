@@ -9,10 +9,11 @@
     <meta charset="UTF-8">
     <title>アカウント登録画面</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
+    <link rel="stylesheet" type="text/css" href="jQuery-Validation-Engine-3.0.0/css/validationEngine.jquery.css">
     
+  </head> 
 <body>
-  
+    
   <header>
       <ul>
           <li>トップ</li>
@@ -27,32 +28,39 @@
       <br><h3>アカウント登録画面</h3><br>
       <form method="post" action="regist_confirm.php">
     
-      
+          
+          
+          
+          
+          
+          
+          
+      <form id="validation" novalidate>
       <ul>
           <li>
             <label>名前(姓)</label>
-            <input type="text" required="required"　class="text" size="35" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*">
+            <input type="text" class="text" size="35" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*">
           </li>     
           <li>
             <label>名前(名)</label>
-            <input type="text" required="required" class="text" size="35" name="last_name" maxlength="10"　pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*">
+            <input type="text" class="text" size="35" name="last_name" maxlength="10"　pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*">
              
           </li>
           <li>
             <label>カナ(姓)</label>
-            <input type="text" required="required" class="text" size="35" name="family_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*">
+            <input type="text" class="text" size="35" name="family_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*">
           </li>     
           <li>
             <label>カナ(名)</label>
-            <input type="text" required="required" class="text" size="35" name="last_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*">
+            <input type="text" class="text" size="35" name="last_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*">
           </li>
           <li>
             <label>メールアドレス</label>
-            <input type="text" required="required" class="text" size="35" name="mail" maxlength="100"　pattern="????????">
+            <input type="email" required class="validate[required]" size="35" name="mail" maxlength="100"　pattern="[/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/]">
           </li>     
           <li>
             <label>パスワード</label>
-            <input type="text" required="required" class="text" size="35" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$">
+            <input type="text" class="text" size="35" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$">
           </li>
           <li>
             <label>性別</label>
@@ -61,7 +69,7 @@
           </li>     
           <li>
             <label>郵便番号</label>
-            <input type="text" required="required" class="text" size="35" name="postal_code" maxlength="7" pattern="^[0-9]+$">
+            <input type="text" class="text" size="35" name="postal_code" maxlength="7" pattern="^[0-9]+$">
           </li>
           <li>
             <label>住所(都道府県)</label>
@@ -118,11 +126,11 @@
           </li> 
           <li>  
             <label>住所(市区町村)</label>
-            <input type="text" required="required" class="text" size="35" name="address_1" maxlength="10"　pattern="????????????">
+            <input type="text" class="text" size="35" name="address_1" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F6]*">
           </li>
           <li>
             <label>住所(番地)</label>
-            <input type="text" required="required" class="text" size="35" name="address_2" maxlength="10" pattern="????????????">
+            <input type="text" class="text" size="35" name="address_2" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F6]*">
           </li>     
           <li>
             <label>アカウント権限</label>
@@ -134,11 +142,25 @@
       </ul>
       
       <br>
-            <p><input type="submit" class="submit" value="確認する"></p>     
+            <p><input type="submit" class="submit" value="確認する"></p>   
+    </form>
   </form>
     
 <footer>copyright D.I.Works|D.I.blog is the one which provides A to Z about programming  
 </footer>
-
+ 
 </body>
+    
+    <script src="jQuery-Validation-Engine-3.0.0/js/jquery-3.4.1.min.js"></script>
+    <script src="jQuery-Validation-Engine-3.0.0/js/languages/jquery.validationEngine-ja.js" type="text/javascript"></script>
+    <script src="jQuery-Validation-Engine-3.0.0/js/jquery.validationEngine.js" type="text/javascript"></script>
+
+    <script>  
+    $(document).ready(function(){
+      $("#validation").validationEngine('attach',{
+        promptPosition: "bottomLeft" 
+      });
+    });
+    </script>
+    
 </html>

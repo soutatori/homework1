@@ -11,7 +11,7 @@ mb_internal_encoding("utf-8");
              //values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_name_kana']."','".$_POST['last_name_kana']."','".$_POST['mail']."','".$_POST['password']."','".$_POST['gender']."','".$_POST['postal_code']."','".$_POST['prefecture']."','".$_POST['address_1']."','".$_POST['address_2']."','".$_POST['authority']."');");  
             
              } catch (PDOException $e) { 
-            print "DBに接続できませんでした。" . $e->getMessage(); 
+            print "エラーが発生したためアカウント登録できません。" . $e->getMessage(); 
             exit(); 
             } 
 ?>
