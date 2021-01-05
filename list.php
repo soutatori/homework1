@@ -4,8 +4,8 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>アカウント更新画面</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>アカウント一覧画面</title>
+    <link rel="stylesheet" type="text/css" href="list.css">
   </head>
     
 <body>
@@ -38,8 +38,8 @@
             <h3 id="tables">アカウント一覧画面</h3>   
           </div>   
             
-        　<div class="bs-component">
-            <table class="table table-striped table-hover">
+        　<div class="bscomponent">
+            <table class="table" border="2">
               <thead>
                 <tr>
                   <th>ID</th>  
@@ -71,8 +71,8 @@
                     <td><?= $row['delete_flag'] ?></td>
                     <td><?= $row['registered_time']?></td>
                     <td><?= $row['update_time'] ?></td>
-                    <td><a href="http://localhost/workspace1/homework1/update.php?id=>?php echo $column['id'] ?>">更新</a></td> 
-                    <td><a href="http://localhost/workspace1/homework1/delete.php?id=>?php echo $column['id'] ?>">削除</a></td> 
+                    <td><a href="http://localhost/workspace1/homework1/update.php?id=>?php echo $column['id'] ?>">更新</a>
+                        <a href="http://localhost/workspace1/homework1/delete.php?id=>?php echo $column['id'] ?>">削除</a></td> 
                         
                   </tr>
                 <?php endforeach; ?>
