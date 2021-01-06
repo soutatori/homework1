@@ -13,10 +13,7 @@
        mb_internal_encoding("utf-8");
     $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
     $stmt = $pdo->query("select * from test1");
-    
-    
-
-  ?>
+　 ?>
   
   <header>
       <ul>
@@ -71,11 +68,16 @@
                     <td><?= $row['delete_flag'] ?></td>
                     <td><?= $row['registered_time']?></td>
                     <td><?= $row['update_time'] ?></td>
-                    <td><a href="http://localhost/workspace1/homework1/update.php?id=>?php echo $column['id'] ?>">更新</a>
-                        <a href="http://localhost/workspace1/homework1/delete.php?id=>?php echo $column['id'] ?>">削除</a></td> 
+                    <td>
+                      <form method="post" action="delete.php">
+                          <input type="submit" class="button1" value="削除">
+                          <input type="hidden" name="id">
+                      </form>
+                    </td> 
                         
                   </tr>
-                <?php endforeach; ?>
+                <?php endforeach; 
+                 ?>
               </tbody>  
             </table>   
           </div>

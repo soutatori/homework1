@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>アカウント登録画面</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="jQuery-Validation-Engine-3.0.0/css/validationEngine.jquery.css">
+    <link rel="stylesheet" href="jQuery-Validation-Engine-3.0.0/css/validationEngine.jquery.css">
     
   </head> 
 <body>
@@ -180,3 +180,7 @@
     </script>
     
 </html>
+
+http://localhost/workspace1/homework1/delete.php?id=
+http://localhost/workspace1/homework1/delete.php?id=1
+http://localhost/workspace1/homework1/delete.php?id=2

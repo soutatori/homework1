@@ -3,17 +3,27 @@
     mb_internal_encoding("utf-8");
     $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
     $stmt = $pdo->query("select * from test1");
+
     
     
+    
+    $sql = "select * from test1　whare id";
+    
+
+    
+    
+        
+  
+ 
+
+ 
 
 
 
-while ($row = $stmt->fetch()) { echo $row['id']; echo $row['last_name'];
 
-}
+    
 
-
- ?>
+     ?>
 
 
 <!DOCTYPE html>
@@ -44,78 +54,71 @@ while ($row = $stmt->fetch()) { echo $row['id']; echo $row['last_name'];
     
     <br><h3>アカウント削除画面</h3><br>
     <form method="post" action="delete_confirm.php">
-
+      <?php foreach ($stmt as $row) 
+   
+ ?>
       <ul>
           <li>
             <label>名前(姓)</label>
-            <?php echo $_POST['family_name'];
-            ?>
+            <input id="family_name" type="text" name="family_name" value="<?php 
+  echo $row['family_name'];  
+ ?>" disabled>
+              
           </li>     
           
           <li>
             <label>名前(名)</label>
-            <?php echo $_POST['last_name'];
-            ?>
+         
           </li>
           
           <li>
             <label>カナ(姓)</label>
-            <?php echo $_POST['family_name_kana'];
-            ?>
+          
           </li>      
           
           <li>
             <label>カナ(名)</label>
-            <?php echo $_POST['last_name_kana'];
-            ?>
+          
           </li> 
           
           <li>
             <label>メールアドレス</label>
-            <?php echo $_POST['mail'];
-            ?>
+         
           </li>    
           
           <li>
             <label>パスワード</label>
-            <?php echo $_POST['password'];
-            ?>
+          
           </li>
           
           <li>
             <label>性別</label>
-            <?php echo $_POST['gender'];
-            ?>
+           
           </li>     
           
           <li>
             <label>郵便番号</label>
-            <?php echo $_POST['postal_code'];
-            ?>
+          
           </li>
           
           <li>
             <label>住所(都道府県)</label>
-            <?php echo $_POST['prefecture'];
-            ?>
+            
           <li>
               
           <li>  
             <label>住所(市区町村)</label>
-            <?php echo $_POST['address_1'];
-            ?>
+           
           </li>
           
           <li>
             <label>住所(番地)</label>
-            <?php echo $_POST['address_2'];
-            ?>
+            
           </li>    
           
           <li>
             <label>アカウント権限</label>
-            <?php echo $_POST['authority'];
-            ?>
+            
           <li>
               
            
