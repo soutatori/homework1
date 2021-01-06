@@ -71,7 +71,8 @@
                     <td>
                       <form method="post" action="delete.php">
                           <input type="submit" class="button1" value="削除">
-                          <input type="hidden" name="id">
+                          <input type="hidden" name="family_name" value="<?php echo $row['family_name']; ?>">
+                          
                       </form>
                     </td> 
                         

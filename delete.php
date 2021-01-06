@@ -2,14 +2,13 @@
 
     mb_internal_encoding("utf-8");
     $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-    $stmt = $pdo->query("select * from test1");
+    $stmt = $pdo->query("select * from test1 where id");
 
     
+　　
+   
     
-    
-    $sql = "select * from test1　whare id";
-    
-
+  
     
     
         
@@ -55,14 +54,13 @@
     <br><h3>アカウント削除画面</h3><br>
     <form method="post" action="delete_confirm.php">
       <?php foreach ($stmt as $row) 
-   
- ?>
+       ?>
       <ul>
           <li>
             <label>名前(姓)</label>
-            <input id="family_name" type="text" name="family_name" value="<?php 
-  echo $row['family_name'];  
- ?>" disabled>
+            <input type="text" name="family_name" value="<?php 
+               echo $id = $_POST['family_name'];  
+               ?>" disabled>
               
           </li>     
           
@@ -123,6 +121,7 @@
               
            
       </ul>
+        
       <br>
     　　　　<p><input type="submit" class="submit" value="確認する"></p>    
       
