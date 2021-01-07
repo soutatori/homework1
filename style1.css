@@ -34,7 +34,7 @@ label{margin-right: 50px;
 
 .confirm{margin: 0 auto;
     width: 500px;
-    height: 700px;
+    
 }
 
 footer{width: 100%;
@@ -43,6 +43,7 @@ footer{width: 100%;
     background-color: black;
     line-height: 60px;
     text-align: center;
+    position: fixed;
     left: 0px;
     bottom: 0px;
 }

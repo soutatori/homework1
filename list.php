@@ -71,8 +71,19 @@
                     <td>
                       <form method="post" action="delete.php">
                           <input type="submit" class="button1" value="削除">
+                          <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                           <input type="hidden" name="family_name" value="<?php echo $row['family_name']; ?>">
-                          
+                          <input type="hidden" name="last_name" value="<?php echo $row['last_name']; ?>">
+                          <input type="hidden" name="family_name_kana" value="<?php echo $row['family_name_kana']; ?>">
+                          <input type="hidden" name="last_name_kana" value="<?php echo $row['last_name_kana']; ?>">
+                          <input type="hidden" name="mail" value="<?php echo $row['mail']; ?>">
+                          <input type="hidden" name="password" value="<?php echo $row['password']; ?>">
+                          <input type="hidden" name="gender" value="<?php echo $row['gender']; ?>">
+                          <input type="hidden" name="postal_code" value="<?php echo $row['postal_code']; ?>">
+                          <input type="hidden" name="prefecture" value="<?php echo $row['prefecture']; ?>">
+                          <input type="hidden" name="address_1" value="<?php echo $row['address_1']; ?>">
+                          <input type="hidden" name="address_2" value="<?php echo $row['address_2']; ?>">
+                          <input type="hidden" name="authority" value="<?php echo $row['authority']; ?>">
                       </form>
                     </td> 
                         

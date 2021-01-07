@@ -31,7 +31,7 @@
   <head>
     <meta charset="UTF-8">
     <title>アカウント削除確認画面</title>
-    <link rel="stylesheet" type="text/css" href="style1.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
     
 <body>
@@ -42,6 +42,7 @@
           <li>プロフィール</li>
           <li>D I.Blogについて</li>
           <li>登録フォーム</li>
+          <li><a href="http://localhost/workspace1/homework1/list.php">アカウント一覧</a></li>
           <li>問い合わせ</li>
           <li>その他</li>
       </ul>
@@ -61,70 +62,105 @@
             <input type="text" name="family_name" value="<?php 
                echo $id = $_POST['family_name'];  
                ?>" disabled>
-              
           </li>     
           
           <li>
             <label>名前(名)</label>
-         
+            <input type="text" name="last_name" value="<?php 
+               echo $id = $_POST['last_name'];  
+               ?>" disabled>
           </li>
           
           <li>
             <label>カナ(姓)</label>
-          
+            <input type="text" name="family_name_kana" value="<?php 
+               echo $id = $_POST['family_name_kana'];  
+               ?>" disabled>
           </li>      
           
           <li>
             <label>カナ(名)</label>
-          
+            <input type="text" name="last_name_kana" value="<?php 
+               echo $id = $_POST['last_name_kana'];  
+               ?>" disabled>
           </li> 
           
           <li>
             <label>メールアドレス</label>
-         
+            <input type="text" name="mail" value="<?php 
+               echo $id = $_POST['mail'];  
+               ?>" disabled>
           </li>    
           
           <li>
             <label>パスワード</label>
-          
+            <input type="text" name="password" value="<?php 
+               echo $id = $_POST['password'];  
+               ?>" disabled>
           </li>
           
           <li>
             <label>性別</label>
-           
+            <input type="text" name="gender" value="<?php 
+               echo $id = $_POST['gender'];  
+               ?>" disabled>
           </li>     
           
           <li>
             <label>郵便番号</label>
-          
+            <input type="text" name="postal_code" value="<?php 
+               echo $id = $_POST['postal_code'];  
+               ?>" disabled>
           </li>
           
           <li>
             <label>住所(都道府県)</label>
-            
+            <input type="text" name="prefecture" value="<?php 
+               echo $id = $_POST['prefecture'];  
+               ?>" disabled>
           <li>
               
           <li>  
             <label>住所(市区町村)</label>
-           
+            <input type="text" name="address_1" value="<?php 
+               echo $id = $_POST['address_1'];  
+               ?>" disabled>
           </li>
           
           <li>
             <label>住所(番地)</label>
-            
+            <input type="text" name="address_2" value="<?php 
+               echo $id = $_POST['address_2'];  
+               ?>" disabled>
           </li>    
           
           <li>
             <label>アカウント権限</label>
-            
+            <input type="text" name="authority" value="<?php 
+               echo $id = $_POST['authority'];  
+               ?>" disabled>
           <li>
               
            
       </ul>
         
-      <br>
-    　　　　<p><input type="submit" class="submit" value="確認する"></p>    
-      
+      <br> 
+          <form action="delete_confirm.php" method="post">
+          <p><input type="submit" class="submit" value="確認する"></p>  
+               <input type="hidden" name="id" value="<?php echo $_POST['id']; ?>">         
+          <input type="hidden" name="family_name" value="<?php echo $id = $_POST['family_name']; ?>"> 
+          <input type="hidden" name="last_name" value="<?php echo $id = $_POST['last_name']; ?>">
+          <input type="hidden" name="family_name_kana" value="<?php echo $id = $_POST['family_name_kana']; ?>">
+          <input type="hidden" name="last_name_kana" value="<?php echo $id = $_POST['last_name_kana']; ?>">
+          <input type="hidden" name="mail" value="<?php echo $id = $_POST['mail']; ?>">
+          <input type="hidden" name="password" value="<?php echo $id = $_POST['password']; ?>">
+          <input type="hidden" name="gender" value="<?php echo $id = $_POST['gender']; ?>">
+          <input type="hidden" name="postal_code" value="<?php echo $id = $_POST['postal_code']; ?>">
+          <input type="hidden" name="prefecture" value="<?php echo $id = $_POST['prefecture']; ?>">
+          <input type="hidden" name="address_1" value="<?php echo $id = $_POST['address_1']; ?>">
+          <input type="hidden" name="address_2" value="<?php echo $id = $_POST['address_2']; ?>">
+          <input type="hidden" name="authority" value="<?php echo $id = $_POST['authority']; ?>"> 
+          </form>
       </form>
   
 </div>
