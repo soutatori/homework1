@@ -38,37 +38,37 @@
       <ul>
           <li>
             <label>名前(姓)</label>
-            <input type="text" class="text" required size="35" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
+            <input type="text" class="text" required size="30" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
               value= "<?php echo $_POST["family_name"];
               ?>">
           </li>     
           <li>
             <label>名前(名)</label>
-            <input type="text" class="text" size="35" name="last_name" maxlength="10"　pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
+            <input type="text" class="text" size="30" name="last_name" maxlength="10"　pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
               value= "<?php echo $_POST["last_name"];
               ?>">
           </li>
           <li>
             <label>カナ(姓)</label>
-            <input type="text" class="text" size="35" name="family_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
+            <input type="text" class="text" size="30" name="family_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
               value= "<?php echo $_POST["family_name_kana"];
               ?>">
           </li>     
           <li>
             <label>カナ(名)</label>
-            <input type="text" class="text" size="35" name="last_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
+            <input type="text" class="text" size="30" name="last_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
               value= "<?php echo $_POST["last_name_kana"];
               ?>">
           </li>
           <li>
             <label>メールアドレス</label>
-            <input type="email" class="validate[required]" size="35" name="mail" maxlength="100"　pattern="[/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/]"
+            <input type="email" class="validate[required]" size="30" name="mail" maxlength="100"　pattern="[/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/]"
               value= "<?php echo $_POST["mail"];
               ?>">
           </li>     
           <li>
             <label>パスワード</label>
-            <input type="text" class="text" size="35" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$"
+            <input type="text" class="text" size="30" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$"
               value= "<?php echo $_POST["password"];
               ?>">
           </li>
@@ -79,7 +79,7 @@
           </li>     
           <li>
             <label>郵便番号</label>
-            <input type="text" class="text" size="35" name="postal_code" maxlength="7" pattern="^[0-9]+$"
+            <input type="text" class="text" size="30" name="postal_code" maxlength="7" pattern="^[0-9]+$"
               value= "<?php echo $_POST["postal_code"];
               ?>">
           </li>
@@ -138,13 +138,13 @@
           </li> 
           <li>  
             <label>住所(市区町村)</label>
-            <input type="text" class="text" size="35" name="address_1" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F6]*"
+            <input type="text" class="text" size="30" name="address_1" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F6]*"
               value= "<?php echo $_POST["address_1"];
               ?>">
           </li>
           <li>
             <label>住所(番地)</label>
-            <input type="text" class="text" size="35" name="address_2" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F6]*"
+            <input type="text" class="text" size="30" name="address_2" maxlength="10" pattern="[^[0-9]+\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F6]*"
               value= "<?php echo $_POST["address_2"];
               ?>">
           </li>     

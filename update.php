@@ -1,13 +1,4 @@
- <?php
-    mb_internal_encoding("utf-8");
-    $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-    $stmt = $pdo->query("select * from test1_id");
-    
-  
-    
-    
 
-  ?>
 
 
 
@@ -31,6 +22,7 @@
           <li>プロフィール</li>
           <li>D I.Blogについて</li>
           <li>登録フォーム</li>
+          <li><a href="http://localhost/workspace1/homework1/list.php">アカウント一覧</a></li>
           <li>問い合わせ</li>
           <li>その他</li>
       </ul>
@@ -38,32 +30,45 @@
     
       <br><h3>アカウント更新画面</h3><br>
       <form method="post" action="update_confirm.php">
-    
-      
+      <input type="hidden" name="id" value= "<?php 
+        echo $_POST["id"];
+        ?>">
       <ul>
           <li>
             <label>名前(姓)</label>
-            <input type="text" class="text" size="35" name="family_name">
+            <input type="text" class="text" required size="30" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
+              value= "<?php echo $_POST["family_name"];
+              ?>">
           </li>     
           <li>
             <label>名前(名)</label>
-            <input type="text" class="text" size="35" name="last_name">
+            <input type="text" class="text" required size="30" name="last_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
+              value= "<?php echo $_POST["last_name"];
+              ?>">
           </li>
           <li>
             <label>カナ(姓)</label>
-            <input type="text" class="text" size="35" name="family_name_kana">
+            <input type="text" class="text" size="30" name="family_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
+              value= "<?php echo $_POST["family_name_kana"];
+              ?>">
           </li>     
           <li>
             <label>カナ(名)</label>
-            <input type="text" class="text" size="35" name="last_name_kana">
+            <input type="text" class="text" size="30" name="last_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
+              value= "<?php echo $_POST["last_name_kana"];
+              ?>">
           </li>
           <li>
             <label>メールアドレス</label>
-            <input type="text" class="text" size="35" name="mail">
+            <input type="email" class="validate[required]" size="30" name="mail" maxlength="100"　pattern="[/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/]"
+              value= "<?php echo $_POST["mail"];
+              ?>">
           </li>     
           <li>
             <label>パスワード</label>
-            <input type="text" class="text" size="35" name="password">
+            <input type="text" class="text" size="30" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$"
+              value= "<?php echo $_POST["password"];
+              ?>">
           </li>
           <li>
             <label>性別</label>
@@ -72,7 +77,9 @@
           </li>     
           <li>
             <label>郵便番号</label>
-            <input type="text" class="text" size="35" name="postal_code">
+            <input type="text" class="text" size="30" name="postal_code" maxlength="7" pattern="^[0-9]+$"
+              value= "<?php echo $_POST["postal_code"];
+              ?>">
           </li>
           <li>
             <label>住所(都道府県)</label>
@@ -129,19 +136,24 @@
           <li> 
           <li>  
             <label>住所(市区町村)</label>
-            <input type="text" class="text" size="35" name="address_1">
+            <input type="text" class="text" size="30" name="address_1" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F6]*"
+              value= "<?php echo $_POST["address_1"];
+              ?>">
           </li>
           <li>
             <label>住所(番地)</label>
-            <input type="text" class="text" size="35" name="address_2">
+            <input type="text" class="text" size="30" name="address_2" maxlength="10" pattern="[^[0-9]+\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F6]*"
+              value= "<?php echo $_POST["address_2"];
+              ?>">
           </li>     
           <li>
             <label>アカウント権限</label>
             <select class="dropdown" name="authority"> 
                 <option value="一般">一般</option>
                 <option value="管理者">管理者</option>
+             </select>
           <li>
-            </select>
+           
       </ul>
       
       <br>
