@@ -1,7 +1,5 @@
 
 
-
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -65,7 +63,10 @@
           
           <li>
             <label>パスワード</label>
-            <input type="hidden" name="password" value="<?= $password ?>">●●●●●●●●●●
+            <input type="hidden" name="password"　<?php
+
+echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT)."\n";
+?> value="<?= $password ?>">●●●●●●●●●●
           </li>
           
           <li>
@@ -75,7 +76,6 @@
 		          else { echo '女'; 
               }
             ?>
-            
           </li>     
           
           <li>
@@ -114,8 +114,9 @@
               }
             ?>
           <li>
-              
-           
+            <?php 
+               $_POST['delete_flag'];
+            ?>
       </ul>
       <br>
     
@@ -133,6 +134,7 @@
           <input type="hidden" value="<?php echo $_POST['address_1']; ?>" name="address_1">
           <input type="hidden" value="<?php echo $_POST['address_2']; ?>" name="address_2">
           <input type="hidden" value="<?php echo $_POST['authority']; ?>" name="authority">
+          <input type="hidden" value="0" name="delete_flag">          
       </form>
     
       <form action="regist_complete.php" method="post">
@@ -142,14 +144,14 @@
           <input type="hidden" value="<?php echo $_POST['family_name_kana']; ?>" name="family_name_kana">
           <input type="hidden" value="<?php echo $_POST['last_name_kana']; ?>" name="last_name_kana">
           <input type="hidden" value="<?php echo $_POST['mail']; ?>" name="mail">
-          <input type="hidden" value="<?php echo $_POST['password']; ?>" name="password">
+          <input type="hidden" value="<?php echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT)."\n"; $_POST['password']; ?>" name="password">
           <input type="hidden" value="<?php echo $_POST['gender']; ?>" name="gender">
           <input type="hidden" value="<?php echo $_POST['postal_code']; ?>" name="postal_code">
           <input type="hidden" value="<?php echo $_POST['prefecture']; ?>" name="prefecture">
           <input type="hidden" value="<?php echo $_POST['address_1']; ?>" name="address_1">
           <input type="hidden" value="<?php echo $_POST['address_2']; ?>" name="address_2">
           <input type="hidden" value="<?php echo $_POST['authority']; ?>" name="authority">
-          
+          <input type="hidden" value="0" name="delete_flag">
       </form>
 </div>
     

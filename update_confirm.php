@@ -15,6 +15,7 @@
           <li>プロフィール</li>
           <li>D I.Blogについて</li>
           <li>登録フォーム</li>
+          <li><a href="http://localhost/workspace1/homework1/list.php">アカウント一覧</a></li>
           <li>問い合わせ</li>
           <li>その他</li>
       </ul>
@@ -57,13 +58,15 @@
           
           <li>
             <label>パスワード</label>
-            <?php echo $_POST['password'];
-            ?>
+            <input type="hidden" name="password" value="<?= $password ?>">●●●●●●●●●●
           </li>
           
           <li>
             <label>性別</label>
-            <?php echo $_POST['gender'];
+            <?php 
+              if ( $_POST['gender'] === "0" ){ echo '男'; }
+		          else { echo '女'; 
+              }
             ?>
           </li>     
           
@@ -93,7 +96,10 @@
           
           <li>
             <label>アカウント権限</label>
-            <?php echo $_POST['authority'];
+            <?php 
+              if ( $_POST['authority'] === "0" ){ echo '一般'; }
+		          else { echo '管理者'; 
+              }
             ?>
           <li>
               

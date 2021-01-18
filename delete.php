@@ -4,24 +4,6 @@
     $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
     $stmt = $pdo->query("select * from test1 where id");
 
-    
-　　
-   
-    
-  
-    
-    
-        
-  
- 
-
- 
-
-
-
-
-    
-
      ?>
 
 
@@ -31,7 +13,7 @@
   <head>
     <meta charset="UTF-8">
     <title>アカウント削除確認画面</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style5.css">
   </head>
     
 <body>
@@ -94,15 +76,16 @@
           
           <li>
             <label>パスワード</label>
-            <input type="text" name="password" value="<?php 
-               echo $id = $_POST['password'];  
-               ?>" disabled>
+            <input type="text" name="password" value="●●●●●●●●●●" disabled>
           </li>
           
           <li>
             <label>性別</label>
             <input type="text" name="gender" value="<?php 
-               echo $id = $_POST['gender'];  
+                $id = $_POST['gender'];  
+               if ( $_POST['gender'] === "0" ){ echo '男'; }
+		          else { echo '女'; 
+              }
                ?>" disabled>
           </li>     
           
@@ -137,9 +120,18 @@
           <li>
             <label>アカウント権限</label>
             <input type="text" name="authority" value="<?php 
-               echo $id = $_POST['authority'];  
+                $id = $_POST['authority']; 
+               if ( $_POST['authority'] === "0" ){ echo '一般'; }
+		          else { echo '管理者'; 
+              }
                ?>" disabled>
           <li>
+            <input type="hidden" name="delete_flag" value="<?php 
+               echo $id = $_POST['delete_flag'];  
+               ?>">
+            <input type="hidden" name="update_time" value="<?php 
+               echo $id = $_POST['update_time'];  
+               ?>"> 
               
            
       </ul>
@@ -160,6 +152,7 @@
               <input type="hidden" name="address_1" value="<?php echo $id = $_POST['address_1']; ?>">
               <input type="hidden" name="address_2" value="<?php echo $id = $_POST['address_2']; ?>">
               <input type="hidden" name="authority" value="<?php echo $id = $_POST['authority']; ?>"> 
+              <input type="hidden" name="delete_flag" value="<?php echo $id = $_POST['delete_flag']; ?>"> 
           </form>
       </form>
   

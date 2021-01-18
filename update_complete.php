@@ -2,10 +2,28 @@
 
 mb_internal_encoding("utf-8");
 
-        try {$id = $_POST['id'];
-             $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-             $pdo ->exec("delete from test1 where id = $id");
+        try {
            
+             $id = $_POST['id'];
+             $family_name = $_POST['family_name'];
+             $last_name = $_POST['last_name'];
+             $family_name_kana = $_POST['family_name_kana'];
+             $last_name_kana = $_POST['last_name_kana'];
+             $mail = $_POST['mail'];
+             $password = $_POST['password'];
+             $gender = $_POST['gender'];
+             $postal_code = $_POST['postal_code'];
+             $prefecture = $_POST['prefecture'];
+             $address_1 = $_POST['address_1'];
+             $address_2 = $_POST['address_2'];
+             $authority = $_POST['authority'];
+            
+             $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
+             $pdo ->exec("UPDATE test1 SET family_name　=　$family_name　,　last_name　=　$last_name　,　family_name_kana　=　$family_name_kana　,　last_name_kana　=　$last_name_kana　,　mail　=　$mail　,　password　=　$password　,　gender　=　$gender　,　postal_code　=　$postal_code　,　prefecture　=　$prefecture　,　address_1　=　$address_1　,　address_2　=　$address_2　,　authority　=　$authority　 WHERE id = $id");
+             
+  
+            
+             
              } catch (PDOException $e) { 
             print "エラーが発生したためアカウント登録できません。" . $e->getMessage(); 
             exit(); 

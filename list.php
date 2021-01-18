@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8">
     <title>アカウント一覧画面</title>
-    <link rel="stylesheet" type="text/css" href="list1.css">
+    <link rel="stylesheet" type="text/css" href="list.css">
   </head>
     
 <body>
@@ -55,19 +55,29 @@
               </thead>    
               <tbody>
                 
-                <?php foreach ($stmt as $i => $row) : ?>
+                <?php foreach ($stmt as $i => $row) : 
+                  ?>
                   <tr>
-                    <td><?= $row['id'] ?></td>
-                    <td><?= $row['family_name'] ?></td>
-                    <td><?= $row['last_name'] ?></td>
-                    <td><?= $row['family_name_kana'] ?></td>
-                    <td><?= $row['last_name_kana'] ?></td>
-                    <td><?= $row['mail'] ?></td>
-                    <td><?= $row['gender'] ?></td>
-                    <td><?= $row['authority'] ?></td>  
-                    <td><?= $row['delete_flag'] ?></td>
-                    <td><?= $row['registered_time']?></td>
-                    <td><?= $row['update_time'] ?></td>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['family_name']; ?></td>
+                    <td><?php echo $row['last_name']; ?></td>
+                    <td><?php echo $row['family_name_kana']; ?></td>
+                    <td><?php echo $row['last_name_kana']; ?></td>
+                    <td><?php echo $row['mail']; ?></td>
+                    <td><?php $row['gender'];
+                        if ( $row['gender'] === "0" ){ echo '男'; }
+		            else { echo '女'; 
+                       }?></td>
+                    <td><?php   
+                        if ( $row['authority'] === "0" ){ echo '一般'; }
+		            else { echo '管理者'; 
+                       }?></td>  
+                    <td><?php   
+                        if ( $row['delete_flag'] === "0" ){ echo '有効'; }
+		            else { echo '無効'; 
+                       }?></td> 
+                    <td><?php echo $row['registered_time']; ?></td>
+                    <td><?php echo $row['update_time']; ?></td>
                     <td>
                       <form method="post" action="update.php">
                           <input type="submit" class="button1" value="更新">
@@ -102,6 +112,7 @@
                           <input type="hidden" name="address_1" value="<?php echo $row['address_1']; ?>">
                           <input type="hidden" name="address_2" value="<?php echo $row['address_2']; ?>">
                           <input type="hidden" name="authority" value="<?php echo $row['authority']; ?>">
+                          <input type="hidden" name="delete_flag" value="<?php echo $row['delete_flag']; ?>">
                       </form>
                     </td> 
                         
