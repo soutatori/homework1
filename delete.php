@@ -76,7 +76,9 @@
           
           <li>
             <label>パスワード</label>
-            <input type="text" name="password" value="●●●●●●●●●●" disabled>
+            <input type="text" name="password" value="<?php 
+               echo $id = $_POST['password'];  
+               ?>" disabled>
           </li>
           
           <li>

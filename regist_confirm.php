@@ -63,10 +63,9 @@
           
           <li>
             <label>パスワード</label>
-            <input type="hidden" name="password"　<?php
-
-echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT)."\n";
-?> value="<?= $password ?>">●●●●●●●●●●
+            <?php 
+              echo $_POST['password'];
+            ?>
           </li>
           
           <li>

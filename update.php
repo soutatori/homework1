@@ -126,7 +126,7 @@
             <input type="text" class="text" size="30" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
               value= "<?php echo $_POST["family_name"];
               ?>">
-          </li>  
+          </li> 
           <span id="notice-input-text-1" style="display: none; color: red;">名前(姓)が未入力です。</span>
           <li>
             <label>名前(名)</label>
@@ -250,17 +250,12 @@
           <span id="notice-input-text-10" style="display: none; color: red;">住所(番地)が未入力です。</span>
           <li>
             <label>アカウント権限</label>
-            <select class="dropdown" name="authority">
-              <?php $authority = $_POST['authority'];
-                 if (true){
-                   echo "<option selected>$authority</option>";
-                } 
-                
-             ?>
-                <option value="0">一般</option>
-                <option value="1">管理者</option>
-             </select>
-          <li>
+            <select class="dropdown" name="authority"> 
+            
+              <option value="0" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "0" ){ echo 'selected'; } ?>>一般</option>
+			  <option value="1" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "1" ){ echo 'selected'; } ?>>管理者</option>
+            </select>
+          </li>
            
       </ul>
       

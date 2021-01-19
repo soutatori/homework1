@@ -19,18 +19,12 @@ mb_internal_encoding("utf-8");
              $authority = $_POST['authority'];
             
              $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-             $pdo ->exec("UPDATE test1 SET family_name　=　$family_name　,　last_name　=　$last_name　,　family_name_kana　=　$family_name_kana　,　last_name_kana　=　$last_name_kana　,　mail　=　$mail　,　password　=　$password　,　gender　=　$gender　,　postal_code　=　$postal_code　,　prefecture　=　$prefecture　,　address_1　=　$address_1　,　address_2　=　$address_2　,　authority　=　$authority　 WHERE id = $id");
-             
-  
-            
+             $pdo ->exec("update test1 set family_name = '$family_name' , last_name = '$last_name' , family_name_kana = '$family_name_kana' , last_name_kana = '$last_name_kana' , mail = '$mail' , password = '$password' , gender = '$gender' , postal_code = '$postal_code' , prefecture = '$prefecture' , address_1 = '$address_1' , address_2 = '$address_2' , authority = '$authority' where id = $id");
              
              } catch (PDOException $e) { 
             print "エラーが発生したためアカウント登録できません。" . $e->getMessage(); 
             exit(); 
             } 
-
-
-
 ?>
 <input type="hidden" name="id" value="<?php echo $id = $_POST['id']; ?>"> 
           <input type="hidden" name="family_name" value="<?php echo $id = $_POST['family_name']; ?>"> 

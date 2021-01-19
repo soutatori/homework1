@@ -58,7 +58,8 @@
           
           <li>
             <label>パスワード</label>
-            <input type="hidden" name="password" value="<?= $password ?>">●●●●●●●●●●
+            <?php echo $_POST['password'];
+            ?>
           </li>
           
           <li>
@@ -109,7 +110,7 @@
     
       <form method="post" action="update.php">
           <input type="submit" class="button1" value="前に戻る">
-          <input type="hidden" name="family_name" value="<?php echo $id = $_POST['family_name']; ?>"> 
+          <input type="hidden" value="<?php echo $_POST['family_name']; ?>" name="family_name"> 
           <input type="hidden" value="<?php echo $_POST['last_name']; ?>" name="last_name">
           <input type="hidden" value="<?php echo $_POST['family_name_kana']; ?>" name="family_name_kana">
           <input type="hidden" value="<?php echo $_POST['last_name_kana']; ?>" name="last_name_kana">
@@ -124,19 +125,19 @@
       </form>
       <form method="post" action="update_complete.php">
           <input type="submit" class="button2" value="更新する">
-          <input type="hidden" name="id" value="<?php echo $id = $_POST['id']; ?>"> 
-          <input type="hidden" name="family_name" value="<?php echo $id = $_POST['family_name']; ?>"> 
-          <input type="hidden" name="last_name" value="<?php echo $id = $_POST['last_name']; ?>">
-          <input type="hidden" name="family_name_kana" value="<?php echo $id = $_POST['family_name_kana']; ?>">
-          <input type="hidden" name="last_name_kana" value="<?php echo $id = $_POST['last_name_kana']; ?>">
-          <input type="hidden" name="mail" value="<?php echo $id = $_POST['mail']; ?>">
-          <input type="hidden" name="password" value="<?php echo $id = $_POST['password']; ?>">
-          <input type="hidden" name="gender" value="<?php echo $id = $_POST['gender']; ?>">
-          <input type="hidden" name="postal_code" value="<?php echo $id = $_POST['postal_code']; ?>">
-          <input type="hidden" name="prefecture" value="<?php echo $id = $_POST['prefecture']; ?>">
-          <input type="hidden" name="address_1" value="<?php echo $id = $_POST['address_1']; ?>">
-          <input type="hidden" name="address_2" value="<?php echo $id = $_POST['address_2']; ?>">
-          <input type="hidden" name="authority" value="<?php echo $id = $_POST['authority']; ?>">
+          <input type="hidden" name="id" value="<?php echo $_POST['id']; ?>"> 
+          <input type="hidden" name="family_name" value="<?php echo $_POST['family_name']; ?>"> 
+          <input type="hidden" name="last_name" value="<?php echo $_POST['last_name']; ?>">
+          <input type="hidden" name="family_name_kana" value="<?php echo $_POST['family_name_kana']; ?>">
+          <input type="hidden" name="last_name_kana" value="<?php echo $_POST['last_name_kana']; ?>">
+          <input type="hidden" name="mail" value="<?php echo $_POST['mail']; ?>">
+          <input type="hidden" value="<?php echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT)."\n"; $_POST['password']; ?>" name="password">
+          <input type="hidden" name="gender" value="<?php echo $_POST['gender']; ?>">
+          <input type="hidden" name="postal_code" value="<?php echo $_POST['postal_code']; ?>">
+          <input type="hidden" name="prefecture" value="<?php echo $_POST['prefecture']; ?>">
+          <input type="hidden" name="address_1" value="<?php echo $_POST['address_1']; ?>">
+          <input type="hidden" name="address_2" value="<?php echo $_POST['address_2']; ?>">
+          <input type="hidden" name="authority" value="<?php echo $_POST['authority']; ?>">
       </form>
      
   

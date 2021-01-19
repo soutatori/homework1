@@ -117,73 +117,94 @@
           <li>
             <label>名前(姓)</label>
             <input type="text"  class="text"  size="30" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
-              value= "<?php echo $_POST["family_name"];
-              ?>">
+              value= "<?php
+                        if (isset($_POST["family_name"])) {
+                            echo $_POST["family_name"];
+                        }
+                        ?>">
           </li>
+          
           <span id="notice-input-text-1" style="display: none; color: red;">名前(姓)が未入力です。</span>
           <li>
             <label>名前(名)</label>
             <input type="text" class="text"  size="30" name="last_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
-              value= "<?php echo $_POST["last_name"];
-              ?>">
+              value= "<?php
+                        if (isset($_POST["last_name"])) {
+                            echo $_POST["last_name"];
+                        }
+                        ?>">
           </li>
           <span id="notice-input-text-2" style="display: none; color: red;">名前(名)が未入力です。</span>
           <li>
             <label>カナ(姓)</label>
             <input type="text" class="text" size="30" name="family_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
-              value= "<?php echo $_POST["family_name_kana"];
-              ?>">
+              value= "<?php
+                        if (isset($_POST["family_name_kana"])) {
+                            echo $_POST["family_name_kana"];
+                        }
+                        ?>">
           </li> 
           <span id="notice-input-text-3" style="display: none; color: red;">カナ(姓)が未入力です。</span>
           <li>
             <label>カナ(名)</label>
             <input type="text" class="text" size="30" name="last_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
-              value= "<?php echo $_POST["last_name_kana"];
-              ?>">
+              value= "<?php
+                        if (isset($_POST["last_name_kana"])) {
+                            echo $_POST["last_name_kana"];
+                        }
+                        ?>">
           </li>
           <span id="notice-input-text-4" style="display: none; color: red;">カナ(名)が未入力です。</span>
           <li>
             <label>メールアドレス</label>
-            <input type="email" class="validate[required]" size="30" name="mail" maxlength="100"　pattern="[/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/]"
-              value= "<?php echo $_POST["mail"];
-              ?>">
+            <input type="email" class="text" size="30" name="mail" maxlength="100"　pattern="[/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/]"
+             value= "<?php
+                        if (isset($_POST["mail"])) {
+                            echo $_POST["mail"];
+                        }
+                        ?>">
           </li> 
           <span id="notice-input-text-5" style="display: none; color: red;">メールアドレスが未入力です。</span>
           <li>
             <label>パスワード</label>
             <input type="text" class="text" size="30" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$"
-              value= "<?php echo $_POST["password"];
-              ?>">
+              value= "<?php
+                        if (isset($_POST["password"])) {
+                            echo $_POST["password"];
+                        }
+                        ?>">
           </li>
           <span id="notice-input-text-6" style="display: none; color: red;">パスワードが未入力です。</span>
           <li>
             <label>性別</label>
-            <input type="radio" name="gender" value="0" checked="checked">男
-            <input type="radio" name="gender" value="1">女
-              <?php $gender = $_POST['gender'];
-                 if (true){
-                   echo "<option checked>$gender</option>";
-                } 
-             ?>
+            <input  type="radio" name="gender" value="0" <?php if( !empty($_POST['gender']) && $_POST['gender'] === "0" ){ echo 'checked'; } ?>>男
+            <input  type="radio" name="gender" value="1" <?php if( !empty($_POST['gender']) && $_POST['gender'] === "1" ){ echo 'checked'; } ?>>女
           </li>     
           <li>
             <label>郵便番号</label>
             <input type="text" class="text" size="30" name="postal_code" maxlength="7" pattern="^[0-9]+$"
-              value= "<?php echo $_POST["postal_code"];
-              ?>">
+              value= "<?php
+                        if (isset($_POST["postal_code"])) {
+                            echo $_POST["postal_code"];
+                        }
+                        ?>">
           </li>
           <span id="notice-input-text-7" style="display: none; color: red;">郵便番号が未入力です。</span>
           <li>
+            <label>アカウント権限</label>
+            <select class="dropdown" name="authority"> 
+            
+              <option value="0" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "0" ){ echo 'selected'; } ?>>一般</option>
+			  <option value="1" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "1" ){ echo 'selected'; } ?>>管理者</option>
+            </select>
+          </li> 
+          <li>
             <label>住所(都道府県)</label>
              <select class="dropdown" name="prefecture">
-             <?php $prefecture = $_POST['prefecture'];
-                 if (true){
-                   echo "<option selected>$prefecture</option>";
-                } 
-             ?>
-                <option value=""></option> 
-                <option value="北海道">北海道</option>
-                <option value="青森県">青森県</option>
+             <option value=""disabled style="display:none;" <?php if(empty($_POST['prefectur'])) echo 'selected'; ?>></option>
+                
+                <option value="北海道" <?php if( !empty($_POST['prefectur']) && $_POST['prefectur'] === "北海道" ){ echo 'selected'; } ?>>北海道</option>
+                <option value="青森県" <?php if( !empty($_POST['prefectur']) && $_POST['prefectur'] === "青森県" ){ echo 'selected'; } ?>>青森県</option>
                 <option value="岩手県">岩手県</option>
                 <option value="宮城県">宮城県</option>
                 <option value="秋田県">秋田県</option>
@@ -235,27 +256,29 @@
           <li>  
             <label>住所(市区町村)</label>
             <input type="text" class="text" size="30" name="address_1" maxlength="10" pattern="[-\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F60-9０-９_\s]*"
-              value= "<?php echo $_POST["address_1"];
-              ?>">
+              value= "<?php
+                        if (isset($_POST["address_1"])) {
+                            echo $_POST["address_1"];
+                        }
+                        ?>">
           </li>
           <span id="notice-input-text-9" style="display: none; color: red;">住所(市区町村)が未入力です。</span>
           <li>
             <label>住所(番地)</label>
             <input type="text" class="text" size="30" name="address_2" maxlength="10" pattern="[-\u4E00-\u9FFF\u3040-\u309Fー\uFF66-\uFF9F\u30A1-\u30F60-9０-９_\s]*"
-              value= "<?php echo $_POST["address_2"];
-              ?>">
+              value= "<?php
+                        if (isset($_POST["address_2"])) {
+                            echo $_POST["address_2"];
+                        }
+                        ?>">
           </li>
           <span id="notice-input-text-10" style="display: none; color: red;">住所(番地)が未入力です。</span>
           <li>
             <label>アカウント権限</label>
             <select class="dropdown" name="authority"> 
-            <?php $authority = $_POST['authority'];
-                 if (true){
-                   echo "<option selected>$authority</option>";
-                } 
-             ?>
-                <option value="0">一般</option>
-                <option value="1">管理者</option> 
+            
+              <option value="0" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "0" ){ echo 'selected'; } ?>>一般</option>
+			  <option value="1" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "1" ){ echo 'selected'; } ?>>管理者</option>
             </select>
           </li>          
             <input type="hidden" name="delete_flag" value="0">

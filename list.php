@@ -1,3 +1,10 @@
+<?php
+       mb_internal_encoding("utf-8");
+    $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
+    $stmt = $pdo->query("SELECT * FROM `test1` ORDER BY `test1`.`id`  DESC");
+ ?>
+
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -9,12 +16,6 @@
   </head>
     
 <body>
-  <?php
-       mb_internal_encoding("utf-8");
-    $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-    $stmt = $pdo->query("select * from test1");
-　 ?>
-  
   <header>
       <ul>
           <li>トップ</li>
