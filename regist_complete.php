@@ -4,34 +4,19 @@
 mb_internal_encoding("utf-8");
 
         try{
-            $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-            $pdo ->exec("insert into test1(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority,delete_flag)
 
+            $hash_pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        
+            $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"roo");
+            $pdo ->exec("insert into test1(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority,delete_flag)
             values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_name_kana']."','".$_POST['last_name_kana']."','".$_POST['mail']."','".$_POST['password']."','".$_POST['gender']."','".$_POST['postal_code']."','".$_POST['prefecture']."','".$_POST['address_1']."','".$_POST['address_2']."','".$_POST['authority']."','".$_POST['delete_flag']."');");   
             
-             $hash_pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            //values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_name_kana']."','".$_POST['last_name_kana']."','".$_POST['mail']."','".$_POST['password']."','".$_POST['gender']."','".$_POST['postal_code']."','".$_POST['prefecture']."','".$_POST['address_1']."','".$_POST['address_2']."','".$_POST['authority']."');");  
-            
-
-            
-             } catch (PDOException $e) { 
-            print "エラーが発生したためアカウント登録できません。" . $e->getMessage(); 
-            exit(); 
+            } catch (PDOException $e) { 
+              print "エラーが発生したためアカウント登録できません。" . $e->getMessage(); 
+              exit(); 
             } 
+         
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

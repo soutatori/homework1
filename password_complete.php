@@ -1,5 +1,4 @@
-
-          <input type="hidden" name="delete_flag" value="<?php echo $id = $_POST['delete_flag']; ?>"> 
+         <input type="hidden" name="delete_flag" value="<?php echo $id = $_POST['password']; ?>"> 
 
 <?php
 
@@ -7,18 +6,21 @@
 mb_internal_encoding("utf-8");
 
         try {
+             $hash_pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            
              $id = $_POST['id'];
+             $password = $_POST['password'];
              $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-             $pdo ->exec("update test1 set delete_flag = 1 where id = $id");
+             $pdo ->exec("update test1 set password = '$password' where id = $id");
              
     
-        
+          
             
         
              } catch (PDOException $e) { 
-            print "エラーが発生したためアカウント削除できません。" . $e->getMessage(); 
+            print "エラーが発生したためパスワード更新できません。" . $e->getMessage(); 
             exit(); 
-        　　　} 
+            } 
 
 
 ?>
@@ -28,7 +30,7 @@ mb_internal_encoding("utf-8");
 
   <head>
     <meta charset="UTF-8">
-    <title>アカウント削除完了画面</title>
+    <title>パスワード変更完了画面</title>
     <link rel="stylesheet" type="text/css" href="style3.css">
   </head>
     
@@ -47,9 +49,9 @@ mb_internal_encoding("utf-8");
     
   <main>
   <form>
-      <br><h3>アカウント削除完了画面</h3><br>
+      <br><h3>パスワード変更完了画面</h3><br>
       <div class="kannryou">
-        削除完了しました
+        変更完了しました
       </div>
        
       <div class="back">

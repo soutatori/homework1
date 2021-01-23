@@ -1,17 +1,10 @@
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 
   <head>
     <meta charset="UTF-8">
     <title>アカウント更新画面</title>
-    <link rel="stylesheet" type="text/css" href="style5.css">
+    <link rel="stylesheet" type="text/css" href="update.css">
   </head>
     
 <body>
@@ -70,13 +63,6 @@
                 document . getElementById( 'notice-input-text-5' ) . style . display = "none";
             }
             
-            if( document . check . password . value == "" ){
-                flag = 1;
-                document . getElementById( 'notice-input-text-6' ) . style . display = "block";
-            }else{
-                document . getElementById( 'notice-input-text-6' ) . style . display = "none";
-            }
-                   
             if( document . check . postal_code . value == "" ){
                 flag = 1;
                 document . getElementById( 'notice-input-text-7' ) . style . display = "block";
@@ -118,7 +104,7 @@
           
           
       <input type="hidden" name="id" value= "<?php 
-        echo $_POST["id"];
+         echo $_POST["id"];
         ?>">
       <ul>
           <li>
@@ -156,13 +142,6 @@
               ?>">
           </li> 
           <span id="notice-input-text-5" style="display: none; color: red;">メールアドレスが未入力です。</span>
-          <li>
-            <label>パスワード</label>
-            <input type="password" class="text" size="30" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$\●"
-              value= "<?php echo $_POST["password"];
-              ?>">
-          </li>
-          <span id="notice-input-text-6" style="display: none; color: red;">パスワードが未入力です。</span>
           <li>
             <label>性別</label>
             <input  type="radio" name="gender" value="0" <?php if( filter_input(INPUT_POST,'gender') === "0" ){ echo 'checked'; } ?>>男

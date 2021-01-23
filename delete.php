@@ -13,7 +13,7 @@
   <head>
     <meta charset="UTF-8">
     <title>アカウント削除確認画面</title>
-    <link rel="stylesheet" type="text/css" href="style5.css">
+    <link rel="stylesheet" type="text/css" href="update.css">
   </head>
     
 <body>
@@ -77,7 +77,7 @@
           <li>
             <label>パスワード</label>
             <input type="password" name="password" value="<?php 
-               echo $id = $_POST['password'];  
+             $id = $_POST['password'];  echo '●●●●●●●●●●';
                ?>" disabled>
           </li>
           
@@ -131,9 +131,7 @@
             <input type="hidden" name="delete_flag" value="<?php 
                echo $id = $_POST['delete_flag'];  
                ?>">
-            <input type="hidden" name="update_time" value="<?php 
-               echo $id = $_POST['update_time'];  
-               ?>"> 
+         
               
            
       </ul>

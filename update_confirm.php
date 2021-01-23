@@ -23,12 +23,13 @@
     
 <div class="confirm">
     <br><h3>アカウント更新確認画面</h3><br>
-
+      <?php $_POST['id'];  
+      ?>
       <ul>
           <li>
             <label>名前(姓)</label>
             <?php 
-               echo $id = $_POST['family_name'];  
+               echo $_POST['family_name'];  
              ?>
           </li>     
           
@@ -55,13 +56,7 @@
             <?php echo $_POST['mail'];
             ?>
           </li>    
-          
-          <li>
-            <label>パスワード</label>
-            <?php echo $_POST['password'];
-            ?>
-          </li>
-          
+
           <li>
             <label>性別</label>
             <?php 
@@ -115,7 +110,6 @@
           <input type="hidden" value="<?php echo $_POST['family_name_kana']; ?>" name="family_name_kana">
           <input type="hidden" value="<?php echo $_POST['last_name_kana']; ?>" name="last_name_kana">
           <input type="hidden" value="<?php echo $_POST['mail']; ?>" name="mail">
-          <input type="hidden" value="<?php echo $_POST['password']; ?>" name="password">
           <input type="hidden" value="<?php echo $_POST['gender']; ?>" name="gender">
           <input type="hidden" value="<?php echo $_POST['postal_code']; ?>" name="postal_code">
           <input type="hidden" value="<?php echo $_POST['prefecture']; ?>" name="prefecture">
@@ -131,7 +125,6 @@
           <input type="hidden" name="family_name_kana" value="<?php echo $_POST['family_name_kana']; ?>">
           <input type="hidden" name="last_name_kana" value="<?php echo $_POST['last_name_kana']; ?>">
           <input type="hidden" name="mail" value="<?php echo $_POST['mail']; ?>">
-          <input type="hidden" value="<?php echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT)."\n"; $_POST['password']; ?>" name="password">
           <input type="hidden" name="gender" value="<?php echo $_POST['gender']; ?>">
           <input type="hidden" name="postal_code" value="<?php echo $_POST['postal_code']; ?>">
           <input type="hidden" name="prefecture" value="<?php echo $_POST['prefecture']; ?>">

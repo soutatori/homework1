@@ -10,7 +10,6 @@ mb_internal_encoding("utf-8");
              $family_name_kana = $_POST['family_name_kana'];
              $last_name_kana = $_POST['last_name_kana'];
              $mail = $_POST['mail'];
-             $password = $_POST['password'];
              $gender = $_POST['gender'];
              $postal_code = $_POST['postal_code'];
              $prefecture = $_POST['prefecture'];
@@ -19,10 +18,10 @@ mb_internal_encoding("utf-8");
              $authority = $_POST['authority'];
             
              $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-             $pdo ->exec("update test1 set family_name = '$family_name' , last_name = '$last_name' , family_name_kana = '$family_name_kana' , last_name_kana = '$last_name_kana' , mail = '$mail' , password = '$password' , gender = '$gender' , postal_code = '$postal_code' , prefecture = '$prefecture' , address_1 = '$address_1' , address_2 = '$address_2' , authority = '$authority' where id = $id");
+             $pdo ->exec("update test1 set family_name = '$family_name' , last_name = '$last_name' , family_name_kana = '$family_name_kana' , last_name_kana = '$last_name_kana' , mail = '$mail' ,  gender = '$gender' , postal_code = '$postal_code' , prefecture = '$prefecture' , address_1 = '$address_1' , address_2 = '$address_2' , authority = '$authority' where id = $id");
              
              } catch (PDOException $e) { 
-            print "エラーが発生したためアカウント登録できません。" . $e->getMessage(); 
+            print "エラーが発生したためアカウント更新できません。" . $e->getMessage(); 
             exit(); 
             } 
 ?>
@@ -32,7 +31,6 @@ mb_internal_encoding("utf-8");
           <input type="hidden" name="family_name_kana" value="<?php echo $id = $_POST['family_name_kana']; ?>">
           <input type="hidden" name="last_name_kana" value="<?php echo $id = $_POST['last_name_kana']; ?>">
           <input type="hidden" name="mail" value="<?php echo $id = $_POST['mail']; ?>">
-          <input type="hidden" name="password" value="<?php echo $id = $_POST['password']; ?>">
           <input type="hidden" name="gender" value="<?php echo $id = $_POST['gender']; ?>">
           <input type="hidden" name="postal_code" value="<?php echo $id = $_POST['postal_code']; ?>">
           <input type="hidden" name="prefecture" value="<?php echo $id = $_POST['prefecture']; ?>">

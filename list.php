@@ -52,6 +52,8 @@
                   <th>登録日時</th>
                   <th>更新日時</th>
                   <th>操作</th>
+                  <th>操作</th>
+                  <th>パスワード変更</th>
                 </tr>    
               </thead>    
               <tbody>
@@ -116,6 +118,13 @@
                           <input type="hidden" name="delete_flag" value="<?php echo $row['delete_flag']; ?>">
                       </form>
                     </td> 
+                    <td>
+                      <form method="post" action="password.php">
+                      <input type="submit" class="button3" value="変更">
+                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                          
+                      </form>
+                    </td>
                         
                   </tr>
                 <?php endforeach; 

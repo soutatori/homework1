@@ -6,8 +6,7 @@
   <head>
     <meta charset="UTF-8">
     <title>アカウント登録画面</title>
-    <link rel="stylesheet" type="text/css" href="style5.css">
-    <link rel="stylesheet" href="jQuery-Validation-Engine-3.0.0/css/validationEngine.jquery.css">
+    <link rel="stylesheet" type="text/css" href="update.css">
     
   </head> 
 <body>
@@ -167,7 +166,7 @@
           <span id="notice-input-text-5" style="display: none; color: red;">メールアドレスが未入力です。</span>
           <li>
             <label>パスワード</label>
-            <input type="password" class="text" size="30" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$"
+            <input type="text" class="text" size="30" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$"
               value= "<?php
                         if (isset($_POST["password"])) {
                             echo $_POST["password"];
@@ -177,7 +176,7 @@
           <span id="notice-input-text-6" style="display: none; color: red;">パスワードが未入力です。</span>
           <li>
             <label>性別</label>
-            <input  type="radio" name="gender" value="0" <?php if( filter_input(INPUT_POST,'gender') === "0" ){ echo 'checked'; } ?>>男
+            <input  type="radio" name="gender" value="0" checked = 'checked' <?php if( filter_input(INPUT_POST,'gender') === "0" ){ echo 'checked'; } ?>>男
             <input  type="radio" name="gender" value="1" <?php if( filter_input(INPUT_POST,'gender') === "1" ){ echo 'checked'; } ?>>女
           </li>     
           <li>
@@ -287,17 +286,7 @@
  
 </body>
     
-    <script src="jQuery-Validation-Engine-3.0.0/js/jquery-3.4.1.min.js"></script>
-    <script src="jQuery-Validation-Engine-3.0.0/js/languages/jquery.validationEngine-ja.js" type="text/javascript"></script>
-    <script src="jQuery-Validation-Engine-3.0.0/js/jquery.validationEngine.js" type="text/javascript"></script>
 
-    <script>  
-    $(document).ready(function(){
-      $("#validation").validationEngine('attach',{
-        promptPosition: "bottomLeft" 
-      });
-    });
-    </script>
     
 </html>
 
