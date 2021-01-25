@@ -1,27 +1,21 @@
-
-          <input type="hidden" name="delete_flag" value="<?php echo $id = $_POST['delete_flag']; ?>"> 
-
 <?php
 
 
-mb_internal_encoding("utf-8");
+  mb_internal_encoding("utf-8");
 
         try {
              $id = $_POST['id'];
              $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
              $pdo ->exec("update test1 set delete_flag = 1 where id = $id");
              
-    
-        
             
-        
              } catch (PDOException $e) { 
             print "エラーが発生したためアカウント削除できません。" . $e->getMessage(); 
             exit(); 
-        　　　} 
-
-
+           } 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="ja">

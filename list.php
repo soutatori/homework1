@@ -18,7 +18,7 @@
 <body>
   <header>
       <ul>
-          <li>トップ</li>
+          <li><a href="http://localhost/workspace1/homework1/index4.html">トップ</a></li>
           <li>プロフィール</li>
           <li>D I.Blogについて</li>
           <li>登録フォーム</li>

@@ -1,9 +1,6 @@
-         <input type="hidden" name="delete_flag" value="<?php echo $id = $_POST['password']; ?>"> 
-
 <?php
 
-
-mb_internal_encoding("utf-8");
+  mb_internal_encoding("utf-8");
 
         try {
              $hash_pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -12,18 +9,14 @@ mb_internal_encoding("utf-8");
              $password = $_POST['password'];
              $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
              $pdo ->exec("update test1 set password = '$password' where id = $id");
-             
-    
-          
             
-        
+            
              } catch (PDOException $e) { 
             print "エラーが発生したためパスワード更新できません。" . $e->getMessage(); 
             exit(); 
             } 
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
