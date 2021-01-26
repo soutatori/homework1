@@ -1,15 +1,32 @@
 <?php
-      mb_internal_encoding("utf-8");
+$err_msg = "";
 
-  try{   
+if (isset($_POST['login'])) {
+  $mail = $_POST['mail'];
+  $password = $_POST['password'];
 
-      $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-      $stmt = $pdo->query();
+  try {
+    $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
+    $sql = 'select * from test1 where mail=? and password=?';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array($mail,$password));
+    $result = $stmt->fetch();
+    $stmt = null;
+    $pdo = null;
 
-      } catch (PDOException $e) { 
-              print "エラーが発生したためログイン情報を取得できません。" . $e->getMessage(); 
-              exit(); 
-            } 
+    if ($result[0] != 0){
+      header('Location: http://localhost/workspace1/homework1/index4.html');
+    exit;
+
+    }else{
+      $err_msg = "アカウント情報が間違っています。";
+    }
+
+  }catch (PDOExeption $e) {
+    echo $e->getMessage();
+    exit;
+  }
+}
 
 ?>
 
@@ -32,7 +49,7 @@
           <li>その他</li>
     </ul>
   </header>   
-    <form>
+    <form action="" method="post">
     <br><h3>ログイン画面</h3><br>
     <div class="login">
     <ul>
@@ -49,7 +66,7 @@
     </div>
     
       <br>
-        <p><input type="submit" class="submit" value="ログイン"></p>
+        <p><input type="submit" class="submit" name="login" value="ログイン"></p>
     </form>
    
     
@@ -57,4 +74,5 @@
 </footer>
     
 </body>
+    
 </html>
