@@ -3,7 +3,7 @@
   mb_internal_encoding("utf-8");
 
         try {
-             $hash_pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+             
             
              $id = $_POST['id'];
              $password = $_POST['password'];

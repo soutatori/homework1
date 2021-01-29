@@ -5,7 +5,7 @@ mb_internal_encoding("utf-8");
 
         try{
 
-            $hash_pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+          
                         
             $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
             $pdo ->exec("insert into test1(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority,delete_flag)

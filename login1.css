@@ -38,13 +38,14 @@ label{
        float: left;
 }
 
-.login { padding-top: 60px;
+.login { padding-top: 100px;
          margin: 0 auto;
-         width: 500px;
+         width: 600px;
 }
 
 .login ul li{ 
               list-style: none; 
+              padding-left: 70px;
 }
 
 p{

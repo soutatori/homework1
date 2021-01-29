@@ -46,8 +46,7 @@
       <form action="password_complete.php" method="post">
           <input type="submit" class="button2" value="変更する">
           <input type="hidden" name="id" value="<?php echo $id = $_POST['id']; ?>"> 
-          <input type="hidden" value="<?php echo password_hash("rasmuslerdorf", PASSWORD_DEFAULT)."\n"; $id = $_POST['password']; ?>" name="password">
-
+          <input type="hidden" value="<?php echo $hash_pass = password_hash($_POST['password'], PASSWORD_DEFAULT); ?>" name="password">
       </form>
      
       
