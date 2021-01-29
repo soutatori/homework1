@@ -1,78 +1,99 @@
 <?php
-$err_msg = "";
 
-if (isset($_POST['login'])) {
-  $mail = $_POST['mail'];
-  $password = $_POST['password'];
+// セッション開始
+session_start();
 
-  try {
-    $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
-    $sql = 'select * from test1 where mail=? and password=?';
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(array($mail,$password));
-    $result = $stmt->fetch();
-    $stmt = null;
-    $pdo = null;
+$db['host'] = "localhost";  // DBサーバのURL
+$db['user'] = "root";  // ユーザー名
+$db['pass'] = "rooy";  // ユーザー名のパスワード
+$db['dbname'] = "homework1";  // データベース名
 
-    if ($result[0] != 0){
-      header('Location: http://localhost/workspace1/homework1/index4.html');
-    exit;
+// エラーメッセージの初期化
+$errorMessage = "";
 
-    }else{
-      $err_msg = "アカウント情報が間違っています。";
+// ログインボタンが押された場合
+if (isset($_POST["login"])) {
+    // 1. ユーザIDの入力チェック
+    if (empty($_POST["id"])) {  // emptyは値が空のとき
+        $errorMessage = 'ユーザーIDが未入力です。';
+    } else if (empty($_POST["password"])) {
+        $errorMessage = 'パスワードが未入力です。';
     }
 
-  }catch (PDOExeption $e) {
-    echo $e->getMessage();
-    exit;
-  }
-}
+    if (!empty($_POST["id"]) && !empty($_POST["password"])) {
+        // 入力したユーザIDを格納
+        $userid = $_POST["id"];
 
+        // 2. ユーザIDとパスワードが入力されていたら認証する
+        $dsn = sprintf('mysql: host=%s; dbname=%s; charset=utf8', $db['host'], $db['dbname']);
+
+        // 3. エラー処理
+        try {
+            $pdo = new PDO($dsn, $db['user'], $db['pass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+
+            $stmt = $pdo->prepare('SELECT * FROM userData WHERE name = ?');
+            $stmt->execute(array($id));
+
+            $password = $_POST["password"];
+
+            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                if (password_verify($password, $row['password'])) {
+                    session_regenerate_id(true);
+
+                    // 入力したIDのユーザー名を取得
+                    $id = $row['id'];
+                    $sql = "SELECT * FROM userData WHERE id = $id";  //入力したIDからユーザー名を取得
+                    $stmt = $pdo->query($sql);
+                    foreach ($stmt as $row) {
+                        $row['name'];  // ユーザー名
+                    }
+                    $_SESSION["family_name"] = $row['name'];
+                    header("Location: Main.php");  // メイン画面へ遷移
+                    exit();  // 処理終了
+                } else {
+                    // 認証失敗
+                    $errorMessage = 'ユーザーIDあるいはパスワードに誤りがあります。';
+                }
+            } else {
+                // 4. 認証成功なら、セッションIDを新規に発行する
+                // 該当データなし
+                $errorMessage = 'ユーザーIDあるいはパスワードに誤りがあります。';
+            }
+        } catch (PDOException $e) {
+            $errorMessage = 'データベースエラー';
+            //$errorMessage = $sql;
+            // $e->getMessage() でエラー内容を参照可能（デバッグ時のみ表示）
+            // echo $e->getMessage();
+        }
+    }
+}
 ?>
 
-
-<!DOCTYPE html>
-<html lang="ja">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>ログイン画面</title>
-    <link rel="stylesheet" type="text/css" href="login.css">
-  </head>
-    
-<body>
-  <header>
-    <ul>
-          <li>プロフィール</li>
-          <li>D I.Blogについて</li>
-          <li>問い合わせ</li>
-          <li>その他</li>
-    </ul>
-  </header>   
-    <form action="" method="post">
-    <br><h3>ログイン画面</h3><br>
-    <div class="login">
-    <ul>
-      <li>
-        <label>メールアドレス</label>
-        <input type="email" class="text" size="30" name="mail" maxlength="100"　pattern="[/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/]"> 
-      </li>
-        <br> 
-      <li>
-        <label>パスワード</label>
-        <input type="password" class="text" size="30" name="password" maxlength="10" pattern="^[0-9A-Za-z]+$">
-      </li>
-    </ul>
-    </div>
-    
-      <br>
-        <p><input type="submit" class="submit" name="login" value="ログイン"></p>
-    </form>
-   
-    
-<footer>copyright D.I.Works|D.I.blog is the one which provides A to Z about programming  
-</footer>
-    
-</body>
-    
+<!doctype html>
+<html>
+    <head>
+            <meta charset="UTF-8">
+            <title>ログイン</title>
+    </head>
+    <body>
+        <h1>ログイン画面</h1>
+        <form id="loginForm" name="loginForm" action="" method="POST">
+            <fieldset>
+                <legend>ログインフォーム</legend>
+                <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
+                <label for="id">ユーザーID</label><input type="text" id="id" name="d" placeholder="ユーザーIDを入力" value="<?php if (!empty($_POST["id"])) {echo htmlspecialchars($_POST["id"], ENT_QUOTES);} ?>">
+                <br>
+                <label for="password">パスワード</label><input type="password" id="password" name="password" value="" placeholder="パスワードを入力">
+                <br>
+                <input type="submit" id="login" name="login" value="ログイン">
+            </fieldset>
+        </form>
+        <br>
+        <form action="SignUp.php">
+            <fieldset>          
+                <legend>新規登録フォーム</legend>
+                <input type="submit" value="新規登録">
+            </fieldset>
+        </form>
+    </body>
 </html>
