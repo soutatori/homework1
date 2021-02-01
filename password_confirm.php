@@ -29,7 +29,7 @@
           <li>
             <label>パスワード</label>
             <?php 
-              echo $_POST['password'];
+              echo '●●●●●●●●●●';
             ?>
           </li>
         </ul>

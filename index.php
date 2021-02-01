@@ -1,3 +1,25 @@
+<?php
+//セッションを使うことを宣言
+session_start();
+
+//ログインされていない場合は強制的にログインページにリダイレクト
+if (!isset($_SESSION["login"])) {
+  header("Location: http://localhost/workspace1/homework1/login.php");
+  exit();
+}
+
+//ログインされている場合は表示用メッセージを編集
+$message = $_SESSION['login']."さんようこそ";
+$message = htmlspecialchars($message);
+
+?>
+ <?php echo 'authority'; ?>
+ <?php echo $message;?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
  <head>

@@ -1,12 +1,10 @@
 <?php
-
+session_start();
 
 $errorMessage = "";
  
   if (isset($_POST["login"])) {
-    // 1. ユーザIDの入力チェック
-    if (empty($_POST["mail"])) {  // emptyは値が空のとき
-        var_dump($_POST["mail"]);
+    if (empty($_POST["mail"])) { 
         $errorMessage = 'ユーザーIDが未入力です。';
     } else if (empty($_POST["password"])) {
         $errorMessage = 'パスワードが未入力です。';
@@ -31,7 +29,9 @@ $errorMessage = "";
       $db_hashed_pwd = $row['password'];
     } 
     if (password_verify($_POST["password"], $db_hashed_pwd)) {
-      header("Location: http://localhost/workspace1/homework1/index4.html");
+      session_regenerate_id(TRUE); //セッションidを再発行
+      $_SESSION["login"] = $_POST['mail']; //セッションにログイン情報を登録
+      header("Location: http://localhost/workspace1/homework1/index.php");
       exit;
     } 
     else {     
