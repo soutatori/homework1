@@ -9,8 +9,10 @@ session_start();
 //}
 
 //ログインされている場合は表示用メッセージを編集
-$message = $_SESSION['login']."さんようこそ";
+$message = $_SESSION['login']."です";
 $message = htmlspecialchars($message);
+
+$show = $_SESSION['login'];
 
 ?>
 
@@ -55,8 +57,19 @@ $message = htmlspecialchars($message);
      <li>プロフィール</li>
      <li>D I.Blogについて</li>
      <li>登録フォーム</li>
-     <li><a href="http://localhost/workspace1/homework1/list.php">アカウント一覧</a></li>
-     <li><a href="http://localhost/workspace1/homework1/regist.php">アカウント登録</a></li>
+     <?php if ($show == 1 ){ 
+      ?>  
+      <li><a href="http://localhost/workspace1/homework1/list.php">アカウント一覧</a></li> <?php } 
+      ?>
+     <?php if ($show == 0 ){ 
+      ?>  <li></li> <?php } 
+      ?>
+     <?php if ($show == 1 ){ 
+      ?>  <li><a href="http://localhost/workspace1/homework1/regist.php">アカウント登録</a></li> <?php } 
+      ?>
+     <?php if ($show == 0 ){ 
+      ?>  <li></li> <?php } 
+      ?>
      <li>問い合わせ</li>
      <li>その他</li>
   </ul>

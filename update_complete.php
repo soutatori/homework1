@@ -60,7 +60,7 @@ mb_internal_encoding("utf-8");
       
       <div class="back">
       
-         <p><input type="button" onclick="location.href='./index4.html'" value="TOPページへ戻る"></p>
+         <p><input type="button" onclick="location.href='./index.php'" value="TOPページへ戻る"></p>
       
       </div>
       

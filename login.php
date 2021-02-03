@@ -1,51 +1,86 @@
 <?php
-session_start();
 
+//session_start();
 $errorMessage = "";
  
-  if (isset($_POST["login"])) { var_dump($_POST['mail']);
+  if (isset($_POST["login"])) { 
     if (empty($_POST["mail"])) { 
         $errorMessage = 'ユーザーIDが未入力です。';
     } else if (empty($_POST["password"])) {
         $errorMessage = 'パスワードが未入力です。';
     }
     
-  var_dump($_POST['password']);
+ 
   if (!empty($_POST["mail"]) && !empty($_POST["password"])) {
     
     $mysqli = new mysqli('localhost', 'root', 'root');
     if ($mysqli->connect_errno) {
       print('<p>エラーが発生したためログイン情報を取得できません。</p>' . $mysqli->connect_error);
-      exit(); var_dump($_POST['mail']);
+      exit(); 
     }
  
     $mysqli->select_db('homework1');
     $mail = $mysqli->real_escape_string($_POST["mail"]);
+    //$authority = $mysql->;
     $query = "SELECT * FROM test1 WHERE mail = '".$mail."'";
+    //$query = "SELECT * FROM test1 WHERE mail = '".$mail."' , authority = '".$authority."' ";
     $result = $mysqli->query($query);
    
     
     while ($row = $result->fetch_assoc())   
       $db_hashed_pwd = $row['password'];
       $authority = $row['authority'];
-   
       
     } 
+      
     if (password_verify($_POST["password"], $db_hashed_pwd)) {
-      session_regenerate_id(TRUE); 
-      $_SESSION["login"] = $_POST['mail'];
+      //session_regenerate_id(TRUE); 
+      //$_SESSION["login"] = $authority; 
       header("Location: http://localhost/workspace1/homework1/index.php");
       exit;
     } 
     else {     
       $errorMessage = "ユーザIDとパスワードを入力してください。もしくは入力に誤りがあります。";
-    } 
+    }   
   } 
  
-
- 
-
 ?>
+
+
+<?php
+session_start();
+       mb_internal_encoding("utf-8");
+    $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
+    $stmt = $pdo->query("SELECT * FROM test1 mail");
+
+
+ foreach ($stmt as $i => $row) : 
+ session_regenerate_id(TRUE); 
+ $_SESSION["login"] = $row['authority']; 
+                  
+
+ echo $row['authority']; 
+ endforeach; 
+                 ?>
+
+
+
+<?php
+//session_start();
+  //     mb_internal_encoding("utf-8");
+    //$pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
+    //$stmt = $pdo->query("SELECT * FROM test1 mail");
+
+
+ //foreach ($stmt as $i => $row) : 
+ //session_regenerate_id(TRUE); 
+ //$_SESSION["login"] = $row['authority']; 
+                  
+
+ //echo $row['authority']; 
+ //endforeach; 
+                 ?>
+
 
 
 <!DOCTYPE html>
