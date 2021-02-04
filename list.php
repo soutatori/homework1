@@ -1,9 +1,17 @@
 <?php
+
+    session_start();
+
+    if (!isset($_SESSION["login"])) {
+      header("Location: http://localhost/workspace1/homework1/login.php");
+      exit();
+    }
+
     mb_internal_encoding("utf-8");
     $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
     $stmt = $pdo->query("SELECT * FROM `test1` ORDER BY `test1`.`id`  DESC");
- ?>
 
+ ?>
 
 
 <!DOCTYPE html>
@@ -18,7 +26,7 @@
 <body>
   <header>
       <ul>
-          <li><a href="http://localhost/workspace1/homework1/index4.html">トップ</a></li>
+          <li><a href="http://localhost/workspace1/homework1/index.php">トップ</a></li>
           <li>プロフィール</li>
           <li>D I.Blogについて</li>
           <li>登録フォーム</li>

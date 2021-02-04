@@ -1,3 +1,14 @@
+<?php
+
+    session_start();
+
+    if (!isset($_SESSION["login"])) {
+      header("Location: http://localhost/workspace1/homework1/login.php");
+      exit();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 

@@ -1,7 +1,13 @@
 <?php
 
+    session_start();
 
-  mb_internal_encoding("utf-8");
+    if (!isset($_SESSION["login"])) {
+      header("Location: http://localhost/workspace1/homework1/login.php");
+      exit();
+    }
+
+        mb_internal_encoding("utf-8");
 
         try {
              $id = $_POST['id'];
@@ -14,7 +20,6 @@
             exit(); 
            } 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -47,7 +52,7 @@
       </div>
        
       <div class="back">
-        <p><input type="button" onclick="location.href='./index4.html'" value="TOPページへ戻る"></p>
+        <p><input type="button" onclick="location.href='./index.php'" value="TOPページへ戻る"></p>
       </div>
       
   </form>

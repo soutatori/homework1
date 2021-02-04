@@ -1,7 +1,14 @@
 
 <?php
 
-mb_internal_encoding("utf-8");
+    session_start();
+
+    if (!isset($_SESSION["login"])) {
+      header("Location: http://localhost/workspace1/homework1/login.php");
+      exit();
+    }
+
+        mb_internal_encoding("utf-8");
 
         try{
 

@@ -1,10 +1,19 @@
-    <?php
+<?php
+   
+
+    session_start();
+
+    if (!isset($_SESSION["login"])) {
+      header("Location: http://localhost/workspace1/homework1/login.php");
+      exit();
+    }
+
 
     mb_internal_encoding("utf-8");
     $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
     $stmt = $pdo->query("select * from test1 where id");
 
-     ?>
+?>
 
 
 <!DOCTYPE html>

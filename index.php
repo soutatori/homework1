@@ -1,22 +1,22 @@
 <?php
-//セッションを使うことを宣言
-session_start();
 
-//ログインされていない場合は強制的にログインページにリダイレクト
-//if (!isset($_SESSION["login"])) {
-  //header("Location: index.php");
-  //exit();
-//}
+    session_start();
 
-//ログインされている場合は表示用メッセージを編集
-$message = $_SESSION['login']."です";
-$message = htmlspecialchars($message);
 
-$show = $_SESSION['login'];
+    if (!isset($_SESSION["login"])) {
+      header("Location: http://localhost/workspace1/homework1/login.php");
+      exit();
+    }
 
-?>
 
- <?php echo $message;?>
+    //$message = $_SESSION['login']."です";
+    //$message = htmlspecialchars($message);
+
+    $show = $_SESSION['login'];
+
+    ?>
+
+     <?php //echo $message;?>
 
 
 
