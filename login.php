@@ -5,7 +5,7 @@ $errorMessage = "";
  
   if (isset($_POST["login"])) { 
     if (empty($_POST["mail"])) { 
-        $errorMessage = 'ユーザーIDが未入力です。';
+        $errorMessage = 'メールアドレスが未入力です。';
     } else if (empty($_POST["password"])) {
         $errorMessage = 'パスワードが未入力です。';
     }
@@ -40,7 +40,7 @@ $errorMessage = "";
       exit;
     } 
     else {     
-      $errorMessage = "ユーザIDとパスワードを入力してください。もしくは入力に誤りがあります。";
+      $errorMessage = "メールアドレスもしくはパスワードに誤りがあります。";
     }   
   } 
       
