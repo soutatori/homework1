@@ -15,7 +15,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>パスワード更新画面</title>
+    <title>パスワード変更画面</title>
     <link rel="stylesheet" type="text/css" href="password.css">
     
     
@@ -34,7 +34,7 @@
       </ul>
   </header>    
     
-      <br><h3>パスワード更新画面</h3><br>
+      <br><h3>パスワード変更画面</h3><br>
       <form method="post" name="check" action="password_confirm.php" onsubmit="return formCheck()">
       
       <script>
