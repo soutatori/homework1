@@ -52,7 +52,6 @@
           <li>プロフィール</li>
           <li>D I.Blogについて</li>
           <li>登録フォーム</li>
-          <li><a href="http://localhost/workspace1/homework1/list.php">アカウント一覧</a></li>
           <li>問い合わせ</li>
           <li>その他</li>
       </ul>
