@@ -1,3 +1,51 @@
+
+<?php
+
+    $dsn = 'mysql:host=localhost;dbname=homework1';
+    $user = 'root';
+    $password = 'root';
+
+    try{
+      $dbh = new PDO($dsn, $user, $password);
+
+        $family_name = $_POST["family_name"];
+        $family_name = '%'.$family_name.'%';
+        $last_name = $_POST["last_name"];
+        $last_name = '%'.$last_name.'%';
+
+      //$sql = 'select family_name, last_name from test1 where id = :id';
+      $sql = 'SELECT * FROM test1 WHERE family_name LIKE :family_name ORDER BY `test1`.`id` DESC';
+      $stmt = $dbh->prepare($sql);
+      $stmt->bindValue(':family_name',$family_name, PDO::PARAM_STR);
+      $stmt->execute();
+
+      //while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        //print("family_nameは" . $row['family_name']. 'です。<br>');
+
+      //}
+
+    }catch (PDOException $e){
+    }
+
+    $dbh = null;
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php
   
     //mb_internal_encoding("utf-8");
@@ -29,25 +77,25 @@
 
 <?PHP
 
-    mb_internal_encoding("utf-8");
-    $pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
+    //mb_internal_encoding("utf-8");
+    //$pdo = new PDO("mysql:dbname=homework1;host=localhost;" ,"root" ,"root");
 
-        $family_name=filter_input(INPUT_POST,'family_name',FILTER_VALIDATE_INT);
-        $last_name=filter_input(INPUT_POST,'last_name',FILTER_VALIDATE_INT);
+        //$family_name=filter_input(INPUT_POST,'family_name',FILTER_VALIDATE_INT);
+        //$last_name=filter_input(INPUT_POST,'last_name',FILTER_VALIDATE_INT);
 
-        if(count($_POST)>0){
-        $stmt = $pdo->query ("SELECT * FROM test1 where 1 ");
-        $data=[];
+        //if(count($_POST)>0){
+        //$stmt = $pdo->query ("SELECT * FROM test1 where 1 ");
+        //$data=[];
             
-        if(is_numeric($family_name)){
-        $sql.=" and family_name=? ";
-        $data = array($family_name);
-        }
+        //if(is_numeric($family_name)){
+        //$sql.=" and family_name=? ";
+        //$data = array($family_name);
+        //}
             
-        if(is_numeric($last_name)){
-        $sql.=" and last_name=? ";
-        $data[] = $last_name;
-        }
+        //if(is_numeric($last_name)){
+        //$sql.=" and last_name=? ";
+        //$data[] = $last_name;
+        //}
             
         //$hoge = '';
  //if(!isset($hoge['family_name'])){
@@ -59,7 +107,7 @@
  //}
         //}
 
-        }
+        //}
 ?>
 
 
@@ -123,7 +171,7 @@
   <head>
     <meta charset="UTF-8">
     <title>アカウント一覧画面</title>
-    <link rel="stylesheet" type="text/css" href="list1.css">
+    <link rel="stylesheet" type="text/css" href="list2.css">
   </head>
     
 <body>
@@ -148,7 +196,7 @@
           </div>   
             
             <div class="add">
-            <form action="" method="post">
+            <form action="list.php" method="post">
             <ul>
               <li>
                 <label>名前(姓)</label>
@@ -217,18 +265,18 @@
               </thead>    
               <tbody>
                 
-                <?php //foreach ($stmt as $i => $row) : 
+                <?php foreach ($stmt as $row) : 
                   ?>
                   
                 <?php //foreach ((array)$sql as $row): 
                  ?>
                   
-                  <?php foreach ((array)$stmt as $row): ?>
+                  <?php //foreach ((array)$stmt as $row): ?>
              
                   
                   <tr>
                     <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['family_name'];　?></td>
+                    <td><?php echo $row['family_name']; ?></td>
                     <td><?php echo $row['last_name']; ?></td>
                     <td><?php echo $row['family_name_kana']; ?></td>
                     <td><?php echo $row['last_name_kana']; ?></td>
@@ -247,8 +295,8 @@
                        }?></td> 
                     <td><?php echo $row['registered_time']; ?></td>
                     <td><?php echo $row['update_time']; ?></td>
+                      
                     <td>
-                        
                       <form method="post" action="update.php">
                           <input type="submit" class="button1" value="更新">
                           <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
@@ -266,6 +314,7 @@
                           <input type="hidden" name="authority" value="<?php echo $row['authority']; ?>">
                       </form>
                    </td>  
+                      
                    <td>
                       <form method="post" action="delete.php">
                           <input type="submit" class="button2" value="削除">
