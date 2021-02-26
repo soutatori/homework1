@@ -1,4 +1,3 @@
-
 <?php
 
     $dsn = 'mysql:host=localhost;dbname=homework1';
@@ -6,28 +5,67 @@
     $password = 'root';
 
     try{
-      $dbh = new PDO($dsn, $user, $password);
-
+        $dbh = new PDO($dsn, $user, $password);
+        
         $family_name = $_POST["family_name"];
         $family_name = '%'.$family_name.'%';
+        
         $last_name = $_POST["last_name"];
         $last_name = '%'.$last_name.'%';
+        
+        $family_name_kana = $_POST["family_name_kana"];
+        $family_name_kana = '%'.$family_name_kana.'%';
+        
+        $last_name_kana = $_POST["last_name_kana"];
+        $last_name_kana = '%'.$last_name_kana.'%';
+        
+        $mail = $_POST["mail"];
+        $mail = '%'.$mail.'%';
+        
+        $gender = $_POST["gender"];
+        $gender = '%'.$gender.'%';
+        
+        $authority = $_POST["authority"];
+        $authority = '%'.$authority.'%';
 
-      //$sql = 'select family_name, last_name from test1 where id = :id';
-      $sql = 'SELECT * FROM test1 WHERE family_name LIKE :family_name ORDER BY `test1`.`id` DESC';
-      $stmt = $dbh->prepare($sql);
-      $stmt->bindValue(':family_name',$family_name, PDO::PARAM_STR);
-      $stmt->execute();
+
+        //$sql = 'select family_name, last_name from test1 where id = :id';
+        $sql = 'SELECT * FROM test1 WHERE family_name LIKE :family_name and last_name LIKE :last_name and family_name_kana LIKE :family_name_kana
+              and last_name_kana LIKE :last_name_kana and mail LIKE :mail and gender LIKE :gender and authority LIKE :authority ORDER BY `test1`.`id` DESC';
+        
+        $stmt = $dbh->prepare($sql);
+        
+        $stmt->bindValue(':family_name',$family_name, PDO::PARAM_STR);
+        $stmt->bindValue(':last_name',$last_name, PDO::PARAM_STR);
+        $stmt->bindValue(':family_name_kana',$family_name_kana, PDO::PARAM_STR);
+        $stmt->bindValue(':last_name_kana',$last_name_kana, PDO::PARAM_STR);
+        $stmt->bindValue(':mail',$mail, PDO::PARAM_STR);
+        $stmt->bindValue(':gender',$gender, PDO::PARAM_STR);
+        $stmt->bindValue(':authority',$authority, PDO::PARAM_STR);
+        
+        $stmt->execute();
+        
+        
+        
+        
+        
+        
 
       //while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         //print("family_nameは" . $row['family_name']. 'です。<br>');
 
       //}
 
-    }catch (PDOException $e){
-    }
+        
+        
+        
+        
+        
+        
+      }catch (PDOException $e){
+      }
 
-    $dbh = null;
+        $dbh = null;
 
 ?>
 
@@ -200,32 +238,57 @@
             <ul>
               <li>
                 <label>名前(姓)</label>
-                <input type="text"  class="text"  size="30" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*">
+                <input type="text"  class="text" size="30" name="family_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
+                  value= "<?php
+                        if (isset($_POST["family_name"])) {
+                            echo $_POST["family_name"];
+                        }
+                        ?>">
               </li>
               
               <li>
                 <label>名前(名)</label>
-                <input type="text" class="text"  size="30" name="last_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*">
+                <input type="text" class="text"  size="30" name="last_name" maxlength="10" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*"
+                  value= "<?php
+                        if (isset($_POST["last_name"])) {
+                            echo $_POST["last_name"];
+                        }
+                        ?>">
               </li>
              
               <li>
                 <label>カナ(姓)</label>
-                <input type="text" class="text" size="30" name="family_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*">
+                <input type="text" class="text" size="30" name="family_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
+                  value= "<?php
+                        if (isset($_POST["family_name_kana"])) {
+                            echo $_POST["family_name_kana"];
+                        }
+                        ?>">
               </li>
                 
               <li>
                 <label>カナ(名)</label>
-                <input type="text" class="text" size="30" name="last_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*">
+                <input type="text" class="text" size="30" name="last_name_kana" maxlength="10" pattern="[\uFF66-\uFF9F\u30A1-\u30F6]*"
+                  value= "<?php
+                        if (isset($_POST["last_name_kana"])) {
+                            echo $_POST["last_name_kana"];
+                        }
+                        ?>">
               </li>
                 
               <li>
                 <label>メールアドレス</label>
-                <input type="email" class="text" size="30" name="mail" maxlength="100"　pattern="[/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/]">
+                <input type="text" class="text" size="30" name="mail" maxlength="100"　pattern="[/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/]"
+                  value= "<?php
+                        if (isset($_POST["mail"])) {
+                            echo $_POST["mail"];
+                        }
+                        ?>">
               </li>
               
               <li>
                 <label>性別</label>
-                <input  type="radio" name="gender" value="0" checked = 'checked' <?php if( filter_input(INPUT_POST,'gender') === "0" ){ echo 'checked'; } ?>>男
+                <input  type="radio" name="gender" value="0" checked = 'checked' <?php if( filter_input(INPUT_POST,'gender') === "0" ){ echo 'checked'; } ?>>男　
                 <input  type="radio" name="gender" value="1" <?php if( filter_input(INPUT_POST,'gender') === "1" ){ echo 'checked'; } ?>>女
               </li>
                 
