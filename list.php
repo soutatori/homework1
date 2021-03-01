@@ -289,15 +289,17 @@
               
               <li>
                 <label>性別</label>
-                <input  type="radio" name="gender" value="0" checked = 'checked' <?php if( filter_input(INPUT_POST,'gender') === "0" ){ echo 'checked'; } ?>>男　
-                <input  type="radio" name="gender" value="1" <?php if( filter_input(INPUT_POST,'gender') === "1" ){ echo 'checked'; } ?>>女
+                <input  type="radio" name="gender" value="">指定なし　
+                <input  type="radio" name="gender" value="0"  <?php if( filter_input(INPUT_POST,'gender') === "0" ){ echo 'checked'; } ?>>男
+                <input  type="radio" name="gender" value="1"  <?php if( filter_input(INPUT_POST,'gender') === "1" ){ echo 'checked'; } ?>>女
               </li>
                 
               <li>
                 <label>アカウント権限</label>
-                <select class="dropdown" name="authority"> 
-                  <option value="0" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "0" ){ echo 'selected'; } ?>>一般</option>
-			      <option value="1" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "1" ){ echo 'selected'; } ?>>管理者</option>
+                <select class="dropdown"  name="authority"> 
+                  <option value=""></option>
+                  <option value="0" <?php if( filter_input(INPUT_POST,'authority') === "0" ){ echo 'selected'; } ?>>一般</option>
+			      <option value="1" <?php if( filter_input(INPUT_POST,'authority') === "1" ){ echo 'selected'; } ?>>管理者</option>
                 </select>
               </li>  
             </ul>
