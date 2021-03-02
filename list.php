@@ -1,5 +1,7 @@
 <?php
 
+    //ini_set('display_errors', 0);
+
     $dsn = 'mysql:host=localhost;dbname=homework1';
     $user = 'root';
     $password = 'root';
@@ -7,12 +9,14 @@
     try{
         $dbh = new PDO($dsn, $user, $password);
         
-        
+        //if (!empty($_POST["family_name"])) {
         $family_name = $_POST["family_name"];
         $family_name = '%'.$family_name.'%';
-        
+        //}
+        //if (!empty($_POST["last_name"])) {
         $last_name = $_POST["last_name"];
         $last_name = '%'.$last_name.'%';
+        //}
         
         $family_name_kana = $_POST["family_name_kana"];
         $family_name_kana = '%'.$family_name_kana.'%';
@@ -31,13 +35,23 @@
 
 
         //$sql = 'select family_name, last_name from test1 where id = :id';
+        if ($_REQUEST["search"]){
         $sql = 'SELECT * FROM test1 WHERE family_name LIKE :family_name and last_name LIKE :last_name and family_name_kana LIKE :family_name_kana
               and last_name_kana LIKE :last_name_kana and mail LIKE :mail and gender LIKE :gender and authority LIKE :authority ORDER BY `test1`.`id` DESC';
+        }
+        else{
+            ;
+        }
         
         $stmt = $dbh->prepare($sql);
         
+        //if (!empty($_POST["family_name"])) {
         $stmt->bindValue(':family_name',$family_name, PDO::PARAM_STR);
+        //}
+        //if (!empty($_POST["last_name"])) {
         $stmt->bindValue(':last_name',$last_name, PDO::PARAM_STR);
+        //}
+        
         $stmt->bindValue(':family_name_kana',$family_name_kana, PDO::PARAM_STR);
         $stmt->bindValue(':last_name_kana',$last_name_kana, PDO::PARAM_STR);
         $stmt->bindValue(':mail',$mail, PDO::PARAM_STR);
@@ -289,7 +303,7 @@
               
               <li>
                 <label>性別</label>
-                <input  type="radio" name="gender" value="">指定なし　
+                <input  type="radio" name="gender" value="" checked = 'checked'>指定なし　
                 <input  type="radio" name="gender" value="0"  <?php if( filter_input(INPUT_POST,'gender') === "0" ){ echo 'checked'; } ?>>男
                 <input  type="radio" name="gender" value="1"  <?php if( filter_input(INPUT_POST,'gender') === "1" ){ echo 'checked'; } ?>>女
               </li>
