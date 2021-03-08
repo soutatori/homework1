@@ -1,6 +1,6 @@
 <?php
 
-    //ini_set('display_errors', 0);
+    ini_set('display_errors', 0);
 
     $dsn = 'mysql:host=localhost;dbname=homework1';
     $user = 'root';
