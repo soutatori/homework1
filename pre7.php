@@ -3,9 +3,10 @@
     
     //function toOneDimension( $currentValue, $previousValue ) { //currentValue 現在処理中の配列要素   previousValue 一つ前の処理までの累積結果。
     function toOneDimension( $previousValue, $currentValue ) {// toOneDimensionという関数を定義している。引数に$previousValueとpreviousValueを指定する。
-    //console.table($previousValue);　//関数のブロックの中で引数に格納された$previousValueをコンソールに出力します。
+    console.log($previousValue);　//関数のブロックの中で引数に格納された$previousValueをコンソールに出力します。
     console.log($currentValue);  //関数のブロックの中で引数に格納された$currentValueをコンソールに出力します。
-    return $currentValue.concat( $previousValue );  //呼び出し元$currentValueの配列の後ろに引数に指定した$previousValue配列を追加する
+    //return $previousValue.concat( $currentValue ); 
+    return $currentValue.concat( $previousValue ); //呼び出し元$currentValueの配列の後ろに引数に指定した$previousValue配列を追加する
     }
     
     var $sampleArrayC = [ 
